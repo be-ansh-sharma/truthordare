@@ -11,5 +11,18 @@ export default StyleSheet.create({
     borderTopLeftRadius: 75,
     height: '100%',
     paddingHorizontal: '5%',
+    justifyContent: 'center',
+  },
+  play: {
+    height: 100,
+  },
+  playWrapper: {
+    alignItems: 'center',
+    height: 100,
+    justifyContent: 'center',
+  },
+  playText: {
+    position: 'absolute',
+    fontSize: 18,
   },
 });
