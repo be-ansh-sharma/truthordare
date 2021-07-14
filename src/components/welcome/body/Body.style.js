@@ -12,6 +12,7 @@ export default StyleSheet.create({
     height: '100%',
     paddingHorizontal: '5%',
     justifyContent: 'center',
+    alignItems: 'center',
   },
   play: {
     height: 100,

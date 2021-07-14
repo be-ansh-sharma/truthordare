@@ -5,7 +5,7 @@ const Pressable = ({
   children,
   onPress,
   android_disableSound = true,
-  android_ripple = { color: 'gray' },
+  android_ripple = null,
   style,
 }) => {
   return (

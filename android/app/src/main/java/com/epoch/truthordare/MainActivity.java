@@ -1,4 +1,4 @@
-package com.truthordare;
+package com.epoch.truthordare;
 
 import com.facebook.react.ReactActivity;
 

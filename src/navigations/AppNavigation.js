@@ -1,8 +1,9 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
 import GameScreen from 'screens/game/Game';
 import Modal from 'screens/modal/Modal';
-import Setup from 'screens/setup/Setup';
+import Welcome from 'screens/setup/welcome/Welcome';
+import Mode from 'screens/setup/mode/Mode';
 
 const Stack = createStackNavigator();
 
@@ -37,8 +38,12 @@ export const HomeNavigation = () => {
 export const SetupNavigation = () => {
   return (
     <Stack.Navigator
-      screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="SetupNavigation" component={Setup} />
+      screenOptions={{
+        headerShown: false,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}>
+      <Stack.Screen name="Welcome" component={Welcome} />
+      <Stack.Screen name="Mode" component={Mode} />
     </Stack.Navigator>
   );
 };

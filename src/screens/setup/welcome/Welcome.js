@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, StatusBar } from 'react-native';
-import Header from 'components/forms/info/header/Header';
-import Body from 'components/forms/info/body/Body';
+import Body from 'components/welcome/body/Body';
+import Header from 'components/welcome/header/Header';
 import { COLOR } from 'global/styles';
 
-const Info = () => {
+const Welcome = () => {
   return (
     <View style={{ flex: 1 }}>
       <StatusBar backgroundColor={COLOR.accent} />
@@ -14,4 +14,4 @@ const Info = () => {
   );
 };
 
-export default Info;
+export default Welcome;

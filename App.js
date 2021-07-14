@@ -25,6 +25,7 @@ const CombinedDarkTheme = {
     ...NavigationDarkTheme.colors,
     primary: COLOR.accent,
     background: COLOR.dark,
+    text: COLOR.background,
   },
 };
 
