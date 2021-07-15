@@ -4,15 +4,24 @@ import { COLOR } from 'global/styles';
 export default StyleSheet.create({
   container: {
     height: '20%',
-    flex: 1,
+  },
+  compact: {
+    height: '5%',
   },
   title: {
     backgroundColor: COLOR.accent,
     borderBottomRightRadius: 75,
     height: '100%',
   },
+  titleCompact: {
+    flexDirection: 'row',
+  },
   logoWrapper: {
     flexGrow: 1,
+  },
+  logoWrapperCompact: {
+    flexGrow: 0,
+    width: 40,
   },
   subTitleWrapper: {
     flexGrow: 1,
@@ -23,6 +32,11 @@ export default StyleSheet.create({
     fontSize: 16,
     fontStyle: 'italic',
   },
+  subTitleTextCompact: {
+    fontStyle: 'normal',
+    textTransform: 'uppercase',
+    fontSize: 18,
+  },
   logo: {
     resizeMode: 'contain',
     height: null,
@@ -30,5 +44,14 @@ export default StyleSheet.create({
     flex: 1,
     position: 'relative',
     top: '25%',
+  },
+  logoCompact: {
+    top: 0,
+  },
+  settingWrapper: {
+    width: '12%',
+  },
+  setting: {
+    width: 40,
   },
 });
