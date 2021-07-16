@@ -28,3 +28,41 @@ export const productionIDs = {
   banner: '',
   fullScreen: '',
 };
+
+export const categories = [
+  {
+    name: 'Teens',
+    value: 'Teens',
+    color: '#2ecc71',
+  },
+  {
+    name: 'Classic',
+    value: 'Classic',
+    color: '#3498db',
+  },
+  {
+    name: 'Hot',
+    value: 'Hot',
+    color: '#f1c40f',
+  },
+  {
+    name: 'Couple Normal',
+    value: 'CoupleNormal',
+    color: '#d35400',
+  },
+  {
+    name: 'Couple Dirty',
+    value: 'CoupleDirty',
+    color: '#e74c3c',
+  },
+  {
+    name: 'Taboo & Kinky',
+    value: 'TabooKinky',
+    color: '#2c3e50',
+  },
+  {
+    name: 'Party',
+    value: 'Party',
+    color: '#586e75',
+  },
+];
