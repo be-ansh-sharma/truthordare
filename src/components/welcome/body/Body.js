@@ -15,7 +15,7 @@ const Body = () => {
   };
 
   useEffect(() => {
-    const timer = setInterval(() => playRef?.current?.play(), 5000);
+    const timer = setInterval(() => playRef?.current?.play(), 7000);
 
     () => clearInterval(timer);
   }, []);

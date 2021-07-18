@@ -20,6 +20,7 @@ module.exports = {
           components: './src/components',
           global: './src/global',
           navigations: './src/navigations',
+          content: './src/content',
           screens: './src/screens',
           store: './src/store',
           assets: './assets',

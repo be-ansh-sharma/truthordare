@@ -24,6 +24,7 @@ export default StyleSheet.create({
   },
   playText: {
     position: 'absolute',
-    fontSize: 18,
+    fontSize: 25,
+    fontFamily: 'Cartoon',
   },
 });

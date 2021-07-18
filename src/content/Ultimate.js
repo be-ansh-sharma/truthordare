@@ -1,4 +1,4 @@
-export const Teens = {
+export const Ultimate = {
   male: {
     1: {
       truth: [

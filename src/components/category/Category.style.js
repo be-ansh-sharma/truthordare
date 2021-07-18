@@ -2,8 +2,6 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginTop: '30%',
+    marginTop: '25%',
   },
 });

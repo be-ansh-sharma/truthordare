@@ -19,7 +19,7 @@ const Header = ({ mode, title, showBack, showSettings }) => {
   };
 
   useEffect(() => {
-    const timer = setInterval(() => settingRef?.current?.play(), 5000);
+    const timer = setInterval(() => settingRef?.current?.play(), 7000);
 
     () => clearInterval(timer);
   }, []);

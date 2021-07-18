@@ -35,7 +35,8 @@ export default StyleSheet.create({
   subTitleTextCompact: {
     fontStyle: 'normal',
     textTransform: 'uppercase',
-    fontSize: 18,
+    fontSize: 26,
+    fontFamily: 'Cartoon',
   },
   logo: {
     resizeMode: 'contain',

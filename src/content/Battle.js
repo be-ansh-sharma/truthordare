@@ -1,4 +1,4 @@
-export const Teens = {
+export const Battle = {
   male: {
     1: {
       truth: [
