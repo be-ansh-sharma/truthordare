@@ -7,9 +7,11 @@ import { name as appName } from './app.json';
 import ReduxThunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import InformationReducer from 'store/reducers/information';
+import GameReducer from 'store/reducers/game';
 
 const rootReducer = combineReducers({
   information: InformationReducer,
+  game: GameReducer,
 });
 
 let store;

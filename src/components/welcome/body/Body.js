@@ -1,45 +1,25 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import styles from './Body.style';
-import { Text } from 'react-native-paper';
-import LottieView from 'lottie-react-native';
-import Pressable from 'components/pressable/Pressable';
 import { useNavigation } from '@react-navigation/native';
+import Button from 'components/button/Button';
 
 const Body = () => {
-  const playRef = useRef();
   const navigation = useNavigation();
 
   const playHandler = () => {
     navigation.navigate('Mode');
   };
 
-  useEffect(() => {
-    const timer = setInterval(() => playRef?.current?.play(), 7000);
-
-    () => clearInterval(timer);
-  }, []);
-
   return (
     <View style={styles.container}>
       <View style={styles.form}>
-        <Pressable onPress={playHandler} style={styles.playWrapper}>
-          <LottieView
-            ref={playRef}
-            style={styles.play}
-            loop={false}
-            source={require('assets/animations/button.json')}
-          />
-          <Text style={styles.playText}>Play</Text>
-        </Pressable>
-        <Pressable style={styles.playWrapper}>
-          <LottieView
-            ref={null}
-            style={styles.play}
-            source={require('assets/animations/button.json')}
-          />
-          <Text style={styles.playText}>Settings</Text>
-        </Pressable>
+        <View style={styles.playWrapper}>
+          <Button text="PLAY" onPress={playHandler} />
+        </View>
+        <View style={styles.playWrapper}>
+          <Button text="SETTINGS" onPress={playHandler} />
+        </View>
       </View>
     </View>
   );

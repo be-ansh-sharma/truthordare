@@ -20,11 +20,11 @@ export default StyleSheet.create({
   playWrapper: {
     alignItems: 'center',
     height: 100,
-    justifyContent: 'center',
   },
   playText: {
-    position: 'absolute',
-    fontSize: 25,
+    fontSize: 26,
     fontFamily: 'Cartoon',
+    width: '60%',
+    textAlign: 'center',
   },
 });

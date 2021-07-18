@@ -1,9 +1,13 @@
 import React from 'react';
-import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
+import {
+  CardStyleInterpolators,
+  createStackNavigator,
+} from '@react-navigation/stack';
 import GameScreen from 'screens/game/Game';
 import Modal from 'screens/modal/Modal';
 import Welcome from 'screens/setup/welcome/Welcome';
 import Mode from 'screens/setup/mode/Mode';
+import Players from 'screens/setup/players/Players';
 
 const Stack = createStackNavigator();
 
@@ -44,6 +48,7 @@ export const SetupNavigation = () => {
       }}>
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Mode" component={Mode} />
+      <Stack.Screen name="Players" component={Players} />
     </Stack.Navigator>
   );
 };

@@ -7,17 +7,14 @@ import Carousel from 'react-native-snap-carousel';
 const windowWidth = Dimensions.get('window').width;
 
 const Category = () => {
-  const carouselRef = useRef();
-  const [selected, setSelected] = useState(0);
+  const carouselRef = useRef();;
 
   const renderItem = ({ item, index }) => {
     return <Card key={item.value} {...item} />;
   };
 
   const snapHandler = index => {
-    if (index !== selected) {
-      setSelected(index);
-    }
+    console.log('aad');
   };
 
   return (
@@ -29,7 +26,7 @@ const Category = () => {
         sliderWidth={windowWidth}
         itemWidth={windowWidth - (25 / 100) * windowWidth}
         loop={true}
-        firstItem={selected}
+        onSnapToItem={snapHandler}
       />
     </View>
   );
