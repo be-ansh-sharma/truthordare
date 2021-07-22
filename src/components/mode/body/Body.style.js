@@ -6,7 +6,7 @@ export default StyleSheet.create({
     height: '80%',
     backgroundColor: COLOR.accent,
   },
-  form: {
+  inner: {
     backgroundColor: COLOR.dark,
     borderTopLeftRadius: 75,
     height: '100%',
@@ -25,5 +25,8 @@ export default StyleSheet.create({
   playText: {
     position: 'absolute',
     fontSize: 18,
+  },
+  nextScreen: {
+    flex: 1,
   },
 });

@@ -1,9 +1,8 @@
 import { setToStorage } from 'global/helpers/utils';
-import { SET_MODE } from 'store/action/game';
+import { ADD_PLAYER, REMOVE_PLAYER, SET_MODE, FETCH_GAME } from 'store/action/game';
 const initialState = {
   gameMode: '',
-  noOfPlayers: '',
-  players: {},
+  players: [],
 };
 
 const game = (state = initialState, action) => {
@@ -12,6 +11,43 @@ const game = (state = initialState, action) => {
       state = {
         ...state,
         gameMode: action.gameMode,
+      };
+      break;
+    case ADD_PLAYER:
+      let hasConflict = false;
+      state.players.map(({ name, gender }) => {
+        if (name === action.player.name && action.player.gender === gender) {
+          hasConflict = true;
+        }
+      });
+      if (hasConflict) {
+        break;
+      }
+      state = {
+        ...state,
+        players: [
+          ...state.players,
+          {
+            id: state.players.length,
+            name: action.player.name,
+            gender: action.player.gender,
+            score: 0,
+          },
+        ],
+      };
+      break;
+    case REMOVE_PLAYER:
+      let newPlayers = state.players.filter(({ id }) => id !== action.id);
+      newPlayers = newPlayers.map((player, index) => (player.id = index));
+      state = {
+        ...state,
+        players: [...newPlayers],
+      };
+      break;
+    case FETCH_GAME:
+      state = {
+        ...state,
+        ...action.game,
       };
       break;
     default:

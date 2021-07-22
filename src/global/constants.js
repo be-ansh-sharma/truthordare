@@ -87,3 +87,8 @@ export const categories = [
       'We dare you to try this. This is the Ultimate challenge. Nothing is too much here. Will you take the challenge?',
   },
 ];
+
+export const genderGradient = {
+  male: ['#00c6ff', '#0072ff'],
+  female: ['#f2709c', '#ff9472'],
+}

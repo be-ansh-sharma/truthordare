@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export const getFromStorage = async key => {
   try {
     const result = await AsyncStorage.getItem(key);
-    return result != null ? JSON.parse(result) : null;
+    return result != null ? JSON.parse(result) : {};
   } catch (err) {
     throw err;
   }

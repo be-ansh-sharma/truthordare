@@ -3,11 +3,11 @@ import {
   CardStyleInterpolators,
   createStackNavigator,
 } from '@react-navigation/stack';
-import GameScreen from 'screens/game/Game';
 import Modal from 'screens/modal/Modal';
 import Welcome from 'screens/setup/welcome/Welcome';
 import Mode from 'screens/setup/mode/Mode';
 import Players from 'screens/setup/players/Players';
+import Game from 'screens/game/Game';
 
 const Stack = createStackNavigator();
 
@@ -19,7 +19,7 @@ const Stack = createStackNavigator();
 //   );
 // };
 
-export const HomeNavigation = () => {
+export const HomeNavigationTest = () => {
   return (
     <Stack.Navigator
       initialRouteName="HomeNavigation"
@@ -39,7 +39,7 @@ export const HomeNavigation = () => {
   );
 };
 
-export const SetupNavigation = () => {
+export const HomeNavigation = () => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -49,6 +49,7 @@ export const SetupNavigation = () => {
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Mode" component={Mode} />
       <Stack.Screen name="Players" component={Players} />
+      <Stack.Screen name="Game" component={Game} />
     </Stack.Navigator>
   );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { COLOR } from 'global/styles';
 import {
   NavigationContainer,
@@ -12,7 +12,10 @@ import {
 import { StatusBar, LogBox } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { fontConfig } from 'global/constants';
-import { SetupNavigation, HomeNavigation } from 'navigations/AppNavigation';
+import { HomeNavigation } from 'navigations/AppNavigation';
+import Splash from 'components/splash/Splash';
+import { fetchGame } from 'store/action/game';
+import { fetchInformation } from 'store/action/information';
 
 LogBox.ignoreLogs(['Reanimated 2', 'Constants']);
 
@@ -30,12 +33,27 @@ const CombinedDarkTheme = {
 };
 
 const App = () => {
-  const { isGameInProgress } = useSelector(state => state.information);
+  const dispatch = useDispatch();
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    Promise.all([dispatch(fetchInformation()), dispatch(fetchGame())])
+      .then(() => {
+        setIsReady(true);
+      })
+      .catch(() => {
+        // @todo Remove everything and start over
+      });
+  }, []);
+
+  if (!isReady) {
+    return <Splash />;
+  }
   return (
     <PaperProvider theme={CombinedDarkTheme}>
       <NavigationContainer theme={CombinedDarkTheme}>
         <StatusBar backgroundColor={COLOR.dark} />
-        {isGameInProgress ? <HomeNavigation /> : <SetupNavigation />}
+        <HomeNavigation />
       </NavigationContainer>
     </PaperProvider>
   );

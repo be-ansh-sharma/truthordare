@@ -1,12 +1,15 @@
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import { Text } from 'react-native-paper';
 
 const Game = () => {
   return (
-    <View>
-      <Text>Game</Text>
-    </View>
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{ flexGrow: 1 }}
+      showsHorizontalScrollIndicator={false}>
+      <Text>asdasd</Text>
+    </ScrollView>
   );
 };
 

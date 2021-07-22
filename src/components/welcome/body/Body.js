@@ -13,9 +13,9 @@ const Body = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.form}>
+      <View style={styles.inner}>
         <View style={styles.playWrapper}>
-          <Button text="PLAY" onPress={playHandler} />
+          <Button text="NEW GAME" onPress={playHandler} />
         </View>
         <View style={styles.playWrapper}>
           <Button text="SETTINGS" onPress={playHandler} />
