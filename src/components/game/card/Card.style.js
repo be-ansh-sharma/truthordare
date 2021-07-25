@@ -2,15 +2,10 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    width: '100%',
-    flexDirection: 'row',
+    height: '80%',
     alignItems: 'center',
-    marginTop: '15%',
-  },
-  input: {
-    flex: 1,
-  },
-  add: {
-    width: '20%',
+    borderRadius: 20,
+    elevation: 14,
+    alignContent: 'center',
   },
 });

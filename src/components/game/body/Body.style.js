@@ -12,7 +12,19 @@ export default StyleSheet.create({
     height: '100%',
     paddingHorizontal: '2%',
   },
-  output: {
-    flex: 1,
+  carousel: {
+    borderWidth: 1,
+    borderColor: 'red',
+    flex: 2,
+  },
+  info: {
+    height: '10%',
+    borderWidth: 1,
+    borderColor: 'red',
+  },
+  control: {
+    height: '10%',
+    borderWidth: 1,
+    borderColor: 'red',
   },
 });

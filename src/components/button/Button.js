@@ -20,7 +20,6 @@ const Button = ({ onPress, text, width, type, children, disabled }) => {
             fontFamily: 'Cartoon',
             textAlign: 'center',
             width: width || '60%',
-            height: '100%',
           }}>
           {text}
         </Text>

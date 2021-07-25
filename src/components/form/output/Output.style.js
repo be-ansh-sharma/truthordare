@@ -3,14 +3,16 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     marginHorizontal: 12,
+    marginTop: 8,
+    height: '60%',
   },
   player: {
     flexDirection: 'row',
-    borderWidth: 1,
-    borderColor: 'red',
     marginVertical: 8,
     alignItems: 'center',
     elevation: 14,
+    height: 50,
+    borderRadius: 10,
   },
   name: {
     flex: 2,
@@ -19,7 +21,7 @@ export default StyleSheet.create({
     paddingLeft: 12,
   },
   gender: {
-    width: '8%',
+    width: '10%',
     fontFamily: 'Cartoon',
     fontSize: 24,
   },

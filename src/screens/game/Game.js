@@ -1,16 +1,15 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
-import { Text } from 'react-native-paper';
+import { View } from 'react-native';
+import Header from 'components/header/Header';
+import Body from 'components/game/body/Body';
 
-const Game = () => {
+const Players = () => {
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-      contentContainerStyle={{ flexGrow: 1 }}
-      showsHorizontalScrollIndicator={false}>
-      <Text>asdasd</Text>
-    </ScrollView>
+    <View style={{ flex: 1 }}>
+      <Header title="" mode="compact" showBack showSettings />
+      <Body />
+    </View>
   );
 };
 
-export default Game;
+export default Players;

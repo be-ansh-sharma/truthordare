@@ -1,17 +1,14 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { View } from 'react-native';
 import Header from 'components/header/Header';
 import Body from 'components/players/body/Body';
 
 const Players = () => {
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-      contentContainerStyle={{ flexGrow: 1 }}
-      showsHorizontalScrollIndicator={false}>
+    <View style={{ flex: 1 }}>
       <Header title="PLAYERS" mode="compact" showBack showSettings />
       <Body />
-    </ScrollView>
+    </View>
   );
 };
 

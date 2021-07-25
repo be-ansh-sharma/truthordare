@@ -1,19 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Dimensions } from 'react-native';
 import { categories } from 'global/constants';
-import Card from './card/Card';
-import styles from './Category.style';
+import Category from './category/Category';
+import styles from './Categories.style';
 import Carousel from 'react-native-snap-carousel';
 import { setMode } from 'store/action/game';
 import { useDispatch } from 'react-redux';
 const windowWidth = Dimensions.get('window').width;
 
-const Category = () => {
+const Categories = () => {
   const carouselRef = useRef();
   const dispatch = useDispatch();
 
-  const renderItem = ({ item, index }) => {
-    return <Card key={item.value} {...item} />;
+  const renderItem = ({ item }) => {
+    return <Category key={item.value} {...item} />;
   };
 
   const snapHandler = index => dispatch(setMode(categories[index].value));
@@ -37,4 +37,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default Categories;

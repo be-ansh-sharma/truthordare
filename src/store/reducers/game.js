@@ -38,7 +38,10 @@ const game = (state = initialState, action) => {
       break;
     case REMOVE_PLAYER:
       let newPlayers = state.players.filter(({ id }) => id !== action.id);
-      newPlayers = newPlayers.map((player, index) => (player.id = index));
+      newPlayers = newPlayers.map((player, index) => {
+        player.id = index;
+        return player;
+      });
       state = {
         ...state,
         players: [...newPlayers],
