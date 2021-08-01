@@ -51,7 +51,7 @@ const Input = () => {
         <Menu.Item onPress={() => genderHandler('F')} title="Female" />
       </Menu>
       <View style={styles.add}>
-        <Button text="ADD" onPress={addHandler} width="100%" />
+        <Button text="ADD" onPress={addHandler} textWidth="100%" />
       </View>
     </View>
   );

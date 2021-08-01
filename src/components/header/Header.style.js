@@ -54,5 +54,6 @@ export default StyleSheet.create({
   },
   setting: {
     width: 40,
+    paddingBottom: 8,
   },
 });

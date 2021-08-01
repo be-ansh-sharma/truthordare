@@ -61,9 +61,7 @@ const Header = ({ mode, title, showBack, showSettings }) => {
           />
         </View>
         <View style={styles.subTitleWrapper}>
-          <Text style={modeStyles.subTitleText}>
-            {title || 'Truth or Dare?'}
-          </Text>
+          <Text style={modeStyles.subTitleText}>{title}</Text>
         </View>
         {showSettings && (
           <Pressable onPress={settingHandler} style={styles.settingWrapper}>

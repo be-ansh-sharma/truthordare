@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable } from 'react-native';
+import { Pressable, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const AppIcons = props => {
@@ -10,6 +10,7 @@ const AppIcons = props => {
     style,
     onPress,
     android_disableSound = false,
+    disabled = false,
   } = props;
 
   const iconPressHanlder = () => {
@@ -18,13 +19,26 @@ const AppIcons = props => {
     }
   };
 
+  let CMP = Pressable;
+  if (disabled) {
+    CMP = View;
+  }
+
   return (
-    <Pressable
-      onPress={iconPressHanlder}
-      style={{ ...style }}
-      android_disableSound={android_disableSound}>
-      <Icon name={name} size={size} color={color} />
-    </Pressable>
+    <>
+      {disabled ? (
+        <View style={{ ...style }}>
+          <Icon name={name} size={size} color={color} />
+        </View>
+      ) : (
+        <Pressable
+          onPress={iconPressHanlder}
+          style={{ ...style }}
+          android_disableSound={android_disableSound}>
+          <Icon name={name} size={size} color={color} />
+        </Pressable>
+      )}
+    </>
   );
 };
 

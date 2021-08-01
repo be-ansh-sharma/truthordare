@@ -13,18 +13,12 @@ export default StyleSheet.create({
     paddingHorizontal: '2%',
   },
   carousel: {
-    borderWidth: 1,
-    borderColor: 'red',
     flex: 2,
   },
   info: {
-    height: '10%',
-    borderWidth: 1,
-    borderColor: 'red',
+    height: '5%',
   },
   control: {
-    height: '10%',
-    borderWidth: 1,
-    borderColor: 'red',
+    height: '15%',
   },
 });

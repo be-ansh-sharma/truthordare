@@ -11,7 +11,7 @@ const Welcome = () => {
       contentContainerStyle={{ flexGrow: 1 }}
       showsHorizontalScrollIndicator={false}>
       <StatusBar backgroundColor={COLOR.accent} />
-      <Header />
+      <Header title="Truth or Dare?" />
       <Body />
     </ScrollView>
   );

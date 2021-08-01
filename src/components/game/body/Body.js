@@ -1,18 +1,46 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { View, Dimensions } from 'react-native';
 import styles from './Body.style';
 import Card from 'components/game/card/Card';
 import Carousel from 'react-native-snap-carousel';
 import { useSelector } from 'react-redux';
-import { Text } from 'react-native-paper';
+import Control from 'components/control/Control';
+import Info from 'components/info/Info';
 const windowWidth = Dimensions.get('window').width;
 
 const Body = () => {
   const carouselRef = useRef();
   const players = useSelector(state => state.game.players);
+  const [choice, setChoice] = useState();
+  const [text, setText] = useState();
 
   const renderItem = ({ item }) => {
     return <Card key={item.value} {...item} />;
+  };
+
+  const positiveHandler = () => {
+    console.log(carouselRef.current.currentIndex);
+    if (!choice) {
+      setChoice('truth');
+    } else {
+      // did the task
+      carouselRef?.current?.snapToNext();
+      setChoice(null);
+    }
+  };
+
+  const negativeHandler = () => {
+    if (!choice) {
+      setChoice('dare');
+    } else {
+      // failed to do the task
+      carouselRef?.current?.snapToNext();
+      setChoice(null);
+    }
+  };
+
+  const snapHandler = index => {
+    console.log(index);
   };
 
   return (
@@ -29,13 +57,23 @@ const Body = () => {
             sliderWidth={windowWidth}
             itemWidth={windowWidth - (25 / 100) * windowWidth}
             loop={true}
+            onSnapToItem={index => snapHandler()}
           />
         </View>
         <View style={styles.info}>
-          <Text>Test</Text>
+          {choice && (
+            <Info
+              choice={choice}
+              gender={players[carouselRef?.current?.currentIndex]?.gender}
+            />
+          )}
         </View>
         <View style={styles.control}>
-          <Text>Test</Text>
+          <Control
+            positiveHandler={positiveHandler}
+            negativeHandler={negativeHandler}
+            choice={choice}
+          />
         </View>
       </View>
     </View>

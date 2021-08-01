@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { COLOR } from 'global/styles';
 
 export default StyleSheet.create({
   container: {
@@ -7,5 +8,30 @@ export default StyleSheet.create({
     borderRadius: 20,
     elevation: 14,
     alignContent: 'center',
+  },
+  divider: {
+    width: '80%',
+    backgroundColor: COLOR.dark,
+    height: 2,
+    opacity: 0.5,
+  },
+  inner: {
+    justifyContent: 'center',
+    flex: 1,
+  },
+  name: {
+    fontSize: 20,
+  },
+  header: {
+    height: '10%',
+    alignSelf: 'center',
+    width: '100%',
+    paddingLeft: '10%',
+    justifyContent: 'center',
+  },
+  choice: {
+    fontSize: 30,
+    fontFamily: 'Cartoon',
+    //fontStyle: 'italic',
   },
 });

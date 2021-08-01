@@ -6,7 +6,7 @@ import Body from 'components/game/body/Body';
 const Players = () => {
   return (
     <View style={{ flex: 1 }}>
-      <Header title="" mode="compact" showBack showSettings />
+      <Header title={null} mode="compact" showBack showSettings />
       <Body />
     </View>
   );

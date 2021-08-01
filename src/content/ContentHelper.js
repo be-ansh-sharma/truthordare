@@ -7,35 +7,30 @@ import { TabooKinky } from './TabooKinky';
 import { Teens } from './Teens';
 import { Ultimate } from './Ultimate';
 
-export const fetchCount = mode => {
-  let selectedMode;
-  let count = 0;
+const getMode = mode => {
   switch (mode) {
     case 'Battle':
-      selectedMode = Battle;
-      break;
+      return Battle;
     case 'Classic':
-      selectedMode = Classic;
-      break;
+      return Classic;
     case 'CoupleDirty':
-      selectedMode = CoupleDirty;
-      break;
+      return CoupleDirty;
     case 'CoupleNormal':
-      selectedMode = CoupleNormal;
-      break;
+      return CoupleNormal;
     case 'Hot':
-      selectedMode = Hot;
-      break;
+      return Hot;
     case 'TabooKinky':
-      selectedMode = TabooKinky;
-      break;
+      return TabooKinky;
     case 'Teens':
-      selectedMode = Teens;
-      break;
+      return Teens;
     case 'Ultimate':
-      selectedMode = Ultimate;
-      break;
+      return Ultimate;
   }
+};
+
+export const fetchCount = async mode => {
+  let selectedMode = getMode();
+  let count = 0;
 
   Object.keys(selectedMode).map(item => {
     let innerItems = selectedMode[item];

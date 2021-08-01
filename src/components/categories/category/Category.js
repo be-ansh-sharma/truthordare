@@ -9,7 +9,9 @@ import LinearGradient from 'react-native-linear-gradient';
 const Category = ({ name, value, color, description }) => {
   const [count, setCount] = useState();
   useEffect(() => {
-    setCount(fetchCount(value));
+    fetchCount(value).then(result => {
+      setCount(result);
+    });
   }, [value]);
 
   return (
