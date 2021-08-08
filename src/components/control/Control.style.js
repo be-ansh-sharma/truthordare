@@ -9,8 +9,6 @@ export default StyleSheet.create({
   button: {
     height: 60,
     width: 60,
-    borderWidth: 1,
-    borderColor: COLOR.accent,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 30,
@@ -19,6 +17,5 @@ export default StyleSheet.create({
   image: {
     height: 40,
     width: 40,
-    //transform: [{ rotateZ: '10deg' }],
   },
 });

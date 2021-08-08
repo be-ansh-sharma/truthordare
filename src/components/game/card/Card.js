@@ -5,7 +5,7 @@ import styles from './Card.style';
 import LinearGradient from 'react-native-linear-gradient';
 import { genderGradient } from 'global/constants';
 
-const Card = ({ gender, name }) => {
+const Card = ({ gender, name, text }) => {
   return (
     <LinearGradient
       start={{ x: 0, y: 0 }}
@@ -17,7 +17,9 @@ const Card = ({ gender, name }) => {
       </View>
       <Divider style={styles.divider} />
       <View style={styles.inner}>
-        <Text style={styles.choice}>Truth or dare?</Text>
+        <Text style={text ? [styles.choice, styles.text] : [styles.choice]}>
+          {text ? text : 'Truth or Dare?'}
+        </Text>
       </View>
     </LinearGradient>
   );

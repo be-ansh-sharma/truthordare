@@ -11,14 +11,48 @@ export default StyleSheet.create({
     borderTopLeftRadius: 75,
     height: '100%',
     paddingHorizontal: '2%',
+    justifyContent: 'space-around',
   },
   carousel: {
-    flex: 2,
+    alignContent: 'center',
+    justifyContent: 'center',
+    flex: 6,
   },
   info: {
-    height: '5%',
+    flex: 0.5,
   },
   control: {
-    height: '15%',
+    flex: 1,
+  },
+  card: {
+    height: '80%',
+    alignItems: 'center',
+    borderRadius: 20,
+    elevation: 14,
+    alignContent: 'center',
+  },
+  divider: {
+    width: '80%',
+    backgroundColor: COLOR.dark,
+    height: 2,
+    opacity: 0.5,
+  },
+  cardInner: {
+    justifyContent: 'center',
+    flex: 1,
+  },
+  name: {
+    fontSize: 20,
+  },
+  header: {
+    height: '10%',
+    alignSelf: 'center',
+    width: '100%',
+    paddingLeft: '10%',
+    justifyContent: 'center',
+  },
+  choice: {
+    fontSize: 30,
+    fontFamily: 'Cartoon',
   },
 });

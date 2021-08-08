@@ -1,8 +1,60 @@
 import { setToStorage } from 'global/helpers/utils';
-import { ADD_PLAYER, REMOVE_PLAYER, SET_MODE, FETCH_GAME } from 'store/action/game';
+import {
+  ADD_PLAYER,
+  REMOVE_PLAYER,
+  SET_MODE,
+  FETCH_GAME,
+} from 'store/action/game';
 const initialState = {
   gameMode: '',
   players: [],
+  currentGame: {
+    level: 1,
+    completed: {
+      male: {
+        1: {
+          truth: [],
+          dare: [],
+        },
+        2: {
+          truth: [],
+          dare: [],
+        },
+        3: {
+          truth: [],
+          dare: [],
+        },
+      },
+      female: {
+        1: {
+          truth: [],
+          dare: [],
+        },
+        2: {
+          truth: [],
+          dare: [],
+        },
+        3: {
+          truth: [],
+          dare: [],
+        },
+      },
+      both: {
+        1: {
+          truth: [],
+          dare: [],
+        },
+        2: {
+          truth: [],
+          dare: [],
+        },
+        3: {
+          truth: [],
+          dare: [],
+        },
+      },
+    },
+  },
 };
 
 const game = (state = initialState, action) => {

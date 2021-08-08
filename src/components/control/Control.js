@@ -5,11 +5,11 @@ import { COLOR } from 'global/styles';
 import Button from 'components/button/Button';
 import Icon from 'components/Icons/Icon';
 
-const Control = ({ positiveHandler, negativeHandler, choice }) => {
+const Control = ({ controlHandler, choice }) => {
   return (
     <View style={styles.container}>
       <Button
-        onPress={negativeHandler}
+        onPress={() => controlHandler('dare')}
         raiseLevel={4}
         height={60}
         width={60}
@@ -31,7 +31,7 @@ const Control = ({ positiveHandler, negativeHandler, choice }) => {
         </View>
       </Button>
       <Button
-        onPress={positiveHandler}
+        onPress={() => controlHandler('truth')}
         raiseLevel={4}
         height={60}
         width={60}

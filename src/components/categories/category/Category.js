@@ -23,7 +23,7 @@ const Category = ({ name, value, color, description }) => {
       </View>
       <Divider style={styles.divider} />
       <View style={styles.count}>
-        <Text style={styles.countText}>{count} Cards</Text>
+        {count && <Text style={styles.countText}>{count} Cards</Text>}
       </View>
     </LinearGradient>
   );
