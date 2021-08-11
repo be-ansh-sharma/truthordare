@@ -4,6 +4,8 @@ import {
   REMOVE_PLAYER,
   SET_MODE,
   FETCH_GAME,
+  UPDATE_GAME,
+  CLEAN_GAME,
 } from 'store/action/game';
 const initialState = {
   gameMode: '',
@@ -104,6 +106,15 @@ const game = (state = initialState, action) => {
         ...state,
         ...action.game,
       };
+      break;
+    case UPDATE_GAME:
+      state = {
+        ...state,
+        currentGame: action.currentGame,
+      };
+      break;
+    case CLEAN_GAME:
+      state = initialState;
       break;
     default:
       return state;

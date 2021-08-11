@@ -63,7 +63,7 @@ export const fetchTruthORDare = async (mode, gender, currentGame) => {
     completed,
     gender,
     level,
-    truth.length,
+    selectedMode.both[level].truth.length,
     mode,
   );
   let dareObject = fetchRandomArrayElement(
@@ -71,18 +71,21 @@ export const fetchTruthORDare = async (mode, gender, currentGame) => {
     completed,
     gender,
     level,
-    truth.length,
+    selectedMode.both[level].dare.length,
     mode,
   );
 
   return {
+    level,
     truth: {
       index: truthObject.index,
       text: truth[truthObject.random].text,
+      gender: truthObject.gender,
     },
     dare: {
       index: dareObject.index,
       text: dare[dareObject.random].text,
+      gender: dareObject.gender,
     },
   };
 };
@@ -112,5 +115,6 @@ const fetchRandomArrayElement = (
   return {
     random,
     index: random > length ? random - length : random,
+    gender: random > length ? gender : 'both',
   };
 };

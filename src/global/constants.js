@@ -91,4 +91,13 @@ export const categories = [
 export const genderGradient = {
   male: ['#00c6ff', '#0072ff'],
   female: ['#f2709c', '#ff9472'],
-}
+};
+
+export const property = {
+  noCardTitle: 'No More!',
+  noCardBody:
+    'Uh oh! We ran out of cards for this category. More are coming in future updates. Meanwhile, you can try other fun modes',
+  generalErrorTitle: 'Error',
+  generalErrorBody:
+    'Oops! This is embarrasing. Please start a new game while we work to fix this issue.',
+};

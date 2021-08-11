@@ -9,7 +9,7 @@ const Control = ({ controlHandler, choice }) => {
   return (
     <View style={styles.container}>
       <Button
-        onPress={() => controlHandler('dare')}
+        onPress={() => controlHandler('negative')}
         raiseLevel={4}
         height={60}
         width={60}
@@ -31,7 +31,7 @@ const Control = ({ controlHandler, choice }) => {
         </View>
       </Button>
       <Button
-        onPress={() => controlHandler('truth')}
+        onPress={() => controlHandler('positive')}
         raiseLevel={4}
         height={60}
         width={60}
