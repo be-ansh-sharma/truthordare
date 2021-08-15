@@ -1,9 +1,14 @@
 import { setToStorage } from 'global/helpers/utils';
-import { FETCH_INFORMATION, INITIATE_GAME } from 'store/action/information';
+import {
+  FETCH_INFORMATION,
+  INITIATE_GAME,
+  SET_VERSION_NUMBER,
+} from 'store/action/information';
 import { CLEAN_GAME } from 'store/action/game';
 const initialState = {
   isAdsShown: true,
   isGameInProgress: null,
+  versionNumber: null,
 };
 
 const information = (state = initialState, action) => {
@@ -24,6 +29,12 @@ const information = (state = initialState, action) => {
       state = {
         ...state,
         isGameInProgress: null,
+      };
+      break;
+    case SET_VERSION_NUMBER:
+      state = {
+        ...state,
+        versionNumber: action.versionNumber,
       };
       break;
     default:

@@ -10,53 +10,8 @@ import {
 const initialState = {
   gameMode: '',
   players: [],
-  currentGame: {
-    level: 1,
-    completed: {
-      male: {
-        1: {
-          truth: [],
-          dare: [],
-        },
-        2: {
-          truth: [],
-          dare: [],
-        },
-        3: {
-          truth: [],
-          dare: [],
-        },
-      },
-      female: {
-        1: {
-          truth: [],
-          dare: [],
-        },
-        2: {
-          truth: [],
-          dare: [],
-        },
-        3: {
-          truth: [],
-          dare: [],
-        },
-      },
-      both: {
-        1: {
-          truth: [],
-          dare: [],
-        },
-        2: {
-          truth: [],
-          dare: [],
-        },
-        3: {
-          truth: [],
-          dare: [],
-        },
-      },
-    },
-  },
+  level: 1,
+  completedIds: [],
 };
 
 const game = (state = initialState, action) => {
@@ -114,7 +69,9 @@ const game = (state = initialState, action) => {
       };
       break;
     case CLEAN_GAME:
-      state = initialState;
+      state = {
+        ...initialState,
+      };
       break;
     default:
       return state;

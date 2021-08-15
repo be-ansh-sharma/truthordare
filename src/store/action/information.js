@@ -2,6 +2,7 @@ import { getFromStorage } from 'global/helpers/utils';
 export const FETCH_INFORMATION = 'FETCH_INFORMATION';
 export const UPDATE_SETUP = 'UPDATE_SETUP';
 export const INITIATE_GAME = 'INITIATE_GAME';
+export const SET_VERSION_NUMBER = 'SET_VERSION_NUMBER';
 
 export const fetchInformation = () => {
   return async dispatch => {
@@ -20,5 +21,12 @@ export const fetchInformation = () => {
 export const initiateGame = () => {
   return {
     type: INITIATE_GAME,
+  };
+};
+
+export const setVersionNumber = versionNumber => {
+  return {
+    type: SET_VERSION_NUMBER,
+    versionNumber,
   };
 };

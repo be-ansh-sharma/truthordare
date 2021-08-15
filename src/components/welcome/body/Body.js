@@ -26,7 +26,7 @@ const Body = () => {
   return (
     <View style={styles.container}>
       <View style={styles.inner}>
-        {isGameInProgress && gameMode.length && players.length && (
+        {!!isGameInProgress && !!gameMode.length && !!players.length && (
           <View style={styles.playWrapper}>
             <Button text="CONTINUE" onPress={continueHandler} />
           </View>

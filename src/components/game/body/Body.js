@@ -8,10 +8,13 @@ import Info from 'components/info/Info';
 import { fetchTruthORDare } from 'content/ContentHelper';
 import { updateCurrentGame } from 'store/action/game';
 import DialogWorker from 'components/dialog/DialogWorker';
+import { useNavigation } from '@react-navigation/native';
 const vw = Dimensions.get('window').width;
 
 const Body = () => {
-  const { players, currentGame, gameMode } = useSelector(state => state.game);
+  const { players, level, gameMode, completedIds } = useSelector(
+    state => state.game,
+  );
   const [choice, setChoice] = useState();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [dialog, setDialog] = useState(false);
@@ -19,6 +22,7 @@ const Body = () => {
   const enterAnimated = useRef(new Animated.Value(0)).current;
   const exitAnimated = useRef(new Animated.Value(0)).current;
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   const controlHandler = control => {
     if (!choice) {
@@ -30,12 +34,12 @@ const Body = () => {
         } else {
           setCurrentIndex(currentIndex + 1);
         }
-        let currentGameObject = gameObject[choice];
-        currentGame.completed[currentGameObject.gender][gameObject.level][
-          choice
-        ].push(currentGameObject.index);
-        currentGame.level = gameObject.level;
-        dispatch(updateCurrentGame(currentGame));
+        // let currentGameObject = gameObject[choice];
+        // currentGame.completed[currentGameObject.gender][gameObject.level][
+        //   choice
+        // ].push(currentGameObject.index);
+        // currentGame.level = gameObject.level;
+        // dispatch(updateCurrentGame(currentGame));
         if (control === 'positive') {
           // update score async
         }
@@ -90,16 +94,21 @@ const Body = () => {
     },
   });
 
-  const openDialog = name => setDialog(name);
+  const scoreHandler = () => navigation.navigate('LeaderBoard');
 
-  const closeDialogHandler = () => setDialog(false);
+  const newGameHandler = () => navigation.popToTop();
 
   useEffect(() => {
     if (!choice) {
       runAnimation(enterAnimated).start(() =>
         runAnimation(exitAnimated).reset(),
       );
-      fetchTruthORDare(gameMode, players[currentIndex].gender, currentGame)
+      fetchTruthORDare(
+        gameMode,
+        players[currentIndex].gender,
+        level,
+        completedIds,
+      )
         .then(result => setGameObject(result))
         .catch(error => {
           if (error.NOCARD) {
@@ -110,11 +119,12 @@ const Body = () => {
     }
   }, [
     choice,
-    currentGame,
+    completedIds,
     currentIndex,
     enterAnimated,
     exitAnimated,
     gameMode,
+    level,
     players,
     runAnimation,
   ]);
@@ -149,7 +159,11 @@ const Body = () => {
         </View>
       </View>
       {!!dialog && (
-        <DialogWorker Name={dialog} closeDialogHandler={closeDialogHandler} />
+        <DialogWorker
+          Name={dialog}
+          positiveHandler={newGameHandler}
+          negativeHandler={scoreHandler}
+        />
       )}
     </>
   );

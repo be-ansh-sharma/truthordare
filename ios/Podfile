@@ -12,6 +12,10 @@ target 'truthordare' do
     :hermes_enabled => false
   )
 
+  pod 'react-native-sqlite-storage', :path => '../node_modules/react-native-sqlite-storage'
+
+  pod 'react-native-version-check', :path => '../node_modules/react-native-version-check'
+
   target 'truthordareTests' do
     inherit! :complete
     # Pods for testing

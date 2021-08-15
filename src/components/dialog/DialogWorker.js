@@ -2,7 +2,7 @@ import React from 'react';
 import Error from './game/Error';
 import { property } from 'global/constants';
 
-const DialogWorker = ({ Name, closeDialogHandler, params }) => {
+const DialogWorker = ({ Name, negativeHandler, positiveHandler, params }) => {
   let title;
   let body;
   if (!Name) {
@@ -25,7 +25,8 @@ const DialogWorker = ({ Name, closeDialogHandler, params }) => {
   return (
     <Name
       params={params}
-      closeDialogHandler={closeDialogHandler}
+      negativeHandler={negativeHandler}
+      positiveHandler={positiveHandler}
       title={title}
       body={body}
     />

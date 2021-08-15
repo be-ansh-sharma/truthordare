@@ -6,6 +6,7 @@ import { Hot } from './Hot';
 import { TabooKinky } from './TabooKinky';
 import { Teens } from './Teens';
 import { Ultimate } from './Ultimate';
+import { dropRows, getRandomRow, pushContent } from 'global/database/Database.helper';
 
 const getMode = mode => {
   switch (mode) {
@@ -30,91 +31,142 @@ const getMode = mode => {
 
 export const fetchCount = async mode => {
   let selectedMode = getMode(mode);
-  let count = 0;
-
-  Object.keys(selectedMode).map(item => {
-    let innerItems = selectedMode[item];
-    Object.keys(innerItems).map(
-      innerItem =>
-      (count +=
-        innerItems[innerItem].truth.length +
-        innerItems[innerItem].dare.length),
-    );
-  });
-
-  return count;
+  return selectedMode.length;
 };
 
-export const fetchTruthORDare = async (mode, gender, currentGame) => {
-  gender = gender === 'M' ? 'male' : 'female';
-  let selectedMode = getMode(mode);
-  let { level, completed } = currentGame;
-  let truth = [
-    ...selectedMode.both[level].truth,
-    ...selectedMode[gender][level].truth,
-  ];
-  let dare = [
-    ...selectedMode.both[level].dare,
-    ...selectedMode[gender][level].dare,
-  ];
-
-  let truthObject = fetchRandomArrayElement(
-    truth.length,
-    completed,
-    gender,
-    level,
-    selectedMode.both[level].truth.length,
-    mode,
-  );
-  let dareObject = fetchRandomArrayElement(
-    dare.length,
-    completed,
-    gender,
-    level,
-    selectedMode.both[level].dare.length,
-    mode,
-  );
-
-  return {
-    level,
-    truth: {
-      index: truthObject.index,
-      text: truth[truthObject.random].text,
-      gender: truthObject.gender,
-    },
-    dare: {
-      index: dareObject.index,
-      text: dare[dareObject.random].text,
-      gender: dareObject.gender,
-    },
-  };
-};
-
-const fetchRandomArrayElement = (
-  maxNumber,
-  completed,
+export const fetchTruthORDare = async (
+  category,
   gender,
   level,
-  length,
-  mode,
+  completedIds,
 ) => {
-  let flag = true;
-  let random;
-  while (flag) {
-    random = Math.floor(Math.random() * maxNumber);
-    if (completed.both[level][mode]?.includes(random)) {
-      continue;
-    } else if (random > length) {
-      if (completed[gender][level][mode]?.includes(random - length)) {
-        continue;
-      }
-    }
-    flag = false;
-  }
-
+  gender = gender === 'M' ? 'male' : 'female';
+  await getRandomRow(category, gender, level, completedIds);
   return {
-    random,
-    index: random > length ? random - length : random,
-    gender: random > length ? gender : 'both',
+    level: 1,
+    truth: {
+      index: 0,
+      text: 'asd',
+      gender: 'male',
+    },
+    dare: {
+      index: 0,
+      text: 'asd',
+      gender: 'male',
+    },
   };
 };
+
+export const setupContent = async () => {
+  await dropRows();
+  [
+    'Battle',
+    'Classic',
+    'CoupleDirty',
+    'CoupleNormal',
+    'Hot',
+    'TabooKinky',
+    'Teens',
+    'Ultimate',
+  ].forEach(mode => {
+    let selected = getMode(mode);
+    pushContent(selected);
+  });
+};
+
+// export const fetchTruthORDare = async (mode, gender, currentGame) => {
+//   try {
+//     gender = gender === 'M' ? 'male' : 'female';
+//     let selectedMode = getMode(mode);
+//     let { level, completed } = currentGame;
+//     let truth = [
+//       ...selectedMode.both[level].truth,
+//       ...selectedMode[gender][level].truth,
+//     ];
+//     let dare = [
+//       ...selectedMode.both[level].dare,
+//       ...selectedMode[gender][level].dare,
+//     ];
+
+//     let truthObject = fetchRandomArrayElement(
+//       truth.length,
+//       completed,
+//       gender,
+//       level,
+//       selectedMode.both[level].truth.length,
+//       'truth',
+//     );
+//     let dareObject = fetchRandomArrayElement(
+//       dare.length,
+//       completed,
+//       gender,
+//       level,
+//       selectedMode.both[level].dare.length,
+//       'dare',
+//     );
+
+//     console.log(truthObject);
+//     console.log(truth);
+//     console.log(truth[truthObject.random].text);
+//     console.log(dareObject);
+//     console.log(dare);
+//     console.log(dare[dareObject.random].text);
+//     console.log(completed);
+
+    // return {
+    //   level,
+    //   truth: {
+    //     index: truthObject.index,
+    //     text: truth[truthObject.random].text,
+    //     gender: truthObject.gender,
+    //   },
+    //   dare: {
+    //     index: dareObject.index,
+    //     text: dare[dareObject.random].text,
+    //     gender: dareObject.gender,
+    //   },
+    // };
+//   } catch (error) {
+//     console.log(error);
+//     throw new Error(error);
+//   }
+// };
+
+// const fetchRandomArrayElement = (
+//   maxNumber,
+//   completed,
+//   gender,
+//   level,
+//   length,
+//   mode,
+// ) => {
+//   let flag = true;
+//   let random;
+
+//   if (
+//     level != 3 &&
+//     completed.both[level][mode].length +
+//       completed[gender][level][mode].length >=
+//       maxNumber
+//   ) {
+//     throw new Error({ NOCARD: true });
+//   }
+
+//   while (flag) {
+//     random = Math.floor(Math.random() * maxNumber);
+//     if (completed.both[level][mode]?.includes(random)) {
+//       continue;
+//     } else if (random > length) {
+//       if (completed[gender][level][mode]?.includes(random - length)) {
+//         continue;
+//       }
+//     }
+//     flag = false;
+//   }
+
+//   return {
+//     random,
+//     index: random >= length ? random - length : random,
+//     gender: random >= length ? gender : 'both',
+//   };
+// };
