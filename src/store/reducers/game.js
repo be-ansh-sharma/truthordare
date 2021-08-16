@@ -6,6 +6,7 @@ import {
   FETCH_GAME,
   UPDATE_GAME,
   CLEAN_GAME,
+  UPDATE_SCORE,
 } from 'store/action/game';
 const initialState = {
   gameMode: '',
@@ -63,14 +64,37 @@ const game = (state = initialState, action) => {
       };
       break;
     case UPDATE_GAME:
+      let newArray = [...state.completedIds];
+      newArray.push(action.id);
+      let newLevel = action.level;
+      if (Array.isArray(newLevel) || newLevel == 3 || newLevel != state.level) {
+        newLevel = action.level;
+      } else {
+        newLevel = Math.trunc(newArray.length / 10);
+        if (newLevel == 0) {
+          newLevel = 1;
+        } else if (newLevel >= 2) {
+          newLevel = 3;
+        } else {
+          newLevel = 2;
+        }
+      }
+
       state = {
         ...state,
-        currentGame: action.currentGame,
+        level: newLevel,
+        completedIds: newArray,
       };
       break;
     case CLEAN_GAME:
       state = {
         ...initialState,
+      };
+      break;
+    case UPDATE_SCORE:
+      state = {
+        ...state,
+        players: action.players,
       };
       break;
     default:

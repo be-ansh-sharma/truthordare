@@ -6,7 +6,11 @@ import { Hot } from './Hot';
 import { TabooKinky } from './TabooKinky';
 import { Teens } from './Teens';
 import { Ultimate } from './Ultimate';
-import { dropRows, getRandomRow, pushContent } from 'global/database/Database.helper';
+import {
+  dropRows,
+  getRandomRow,
+  pushContent,
+} from 'global/database/Database.helper';
 
 const getMode = mode => {
   switch (mode) {
@@ -40,133 +44,47 @@ export const fetchTruthORDare = async (
   level,
   completedIds,
 ) => {
-  gender = gender === 'M' ? 'male' : 'female';
-  await getRandomRow(category, gender, level, completedIds);
-  return {
-    level: 1,
-    truth: {
-      index: 0,
-      text: 'asd',
-      gender: 'male',
-    },
-    dare: {
-      index: 0,
-      text: 'asd',
-      gender: 'male',
-    },
-  };
+  try {
+    let result = await getRandomRow(category, gender, level, completedIds);
+    if (result?.updateLevel && !Array.isArray(level) && level !== 3) {
+      return await fetchTruthORDare(category, gender, level + 1, completedIds);
+    } else if (result?.updateLevel && (level == 3 || Array.isArray(level))) {
+      if (Array.isArray(level)) {
+        let _error = new Error('Not enough Cards');
+        _error.NOCARD = true;
+        throw _error;
+      } else {
+        return await fetchTruthORDare(category, gender, [2, 3], completedIds);
+      }
+    }
+
+    return {
+      level,
+      ...result,
+    };
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
 };
 
 export const setupContent = async () => {
-  await dropRows();
-  [
-    'Battle',
-    'Classic',
-    'CoupleDirty',
-    'CoupleNormal',
-    'Hot',
-    'TabooKinky',
-    'Teens',
-    'Ultimate',
-  ].forEach(mode => {
-    let selected = getMode(mode);
-    pushContent(selected);
-  });
+  try {
+    await dropRows();
+    [
+      'Battle',
+      'Classic',
+      'CoupleDirty',
+      'CoupleNormal',
+      'Hot',
+      'TabooKinky',
+      'Teens',
+      'Ultimate',
+    ].forEach(mode => {
+      let selected = getMode(mode);
+      pushContent(selected);
+    });
+  } catch (err) {
+    throw err;
+  }
 };
-
-// export const fetchTruthORDare = async (mode, gender, currentGame) => {
-//   try {
-//     gender = gender === 'M' ? 'male' : 'female';
-//     let selectedMode = getMode(mode);
-//     let { level, completed } = currentGame;
-//     let truth = [
-//       ...selectedMode.both[level].truth,
-//       ...selectedMode[gender][level].truth,
-//     ];
-//     let dare = [
-//       ...selectedMode.both[level].dare,
-//       ...selectedMode[gender][level].dare,
-//     ];
-
-//     let truthObject = fetchRandomArrayElement(
-//       truth.length,
-//       completed,
-//       gender,
-//       level,
-//       selectedMode.both[level].truth.length,
-//       'truth',
-//     );
-//     let dareObject = fetchRandomArrayElement(
-//       dare.length,
-//       completed,
-//       gender,
-//       level,
-//       selectedMode.both[level].dare.length,
-//       'dare',
-//     );
-
-//     console.log(truthObject);
-//     console.log(truth);
-//     console.log(truth[truthObject.random].text);
-//     console.log(dareObject);
-//     console.log(dare);
-//     console.log(dare[dareObject.random].text);
-//     console.log(completed);
-
-    // return {
-    //   level,
-    //   truth: {
-    //     index: truthObject.index,
-    //     text: truth[truthObject.random].text,
-    //     gender: truthObject.gender,
-    //   },
-    //   dare: {
-    //     index: dareObject.index,
-    //     text: dare[dareObject.random].text,
-    //     gender: dareObject.gender,
-    //   },
-    // };
-//   } catch (error) {
-//     console.log(error);
-//     throw new Error(error);
-//   }
-// };
-
-// const fetchRandomArrayElement = (
-//   maxNumber,
-//   completed,
-//   gender,
-//   level,
-//   length,
-//   mode,
-// ) => {
-//   let flag = true;
-//   let random;
-
-//   if (
-//     level != 3 &&
-//     completed.both[level][mode].length +
-//       completed[gender][level][mode].length >=
-//       maxNumber
-//   ) {
-//     throw new Error({ NOCARD: true });
-//   }
-
-//   while (flag) {
-//     random = Math.floor(Math.random() * maxNumber);
-//     if (completed.both[level][mode]?.includes(random)) {
-//       continue;
-//     } else if (random > length) {
-//       if (completed[gender][level][mode]?.includes(random - length)) {
-//         continue;
-//       }
-//     }
-//     flag = false;
-//   }
-
-//   return {
-//     random,
-//     index: random >= length ? random - length : random,
-//     gender: random >= length ? gender : 'both',
-//   };
-// };

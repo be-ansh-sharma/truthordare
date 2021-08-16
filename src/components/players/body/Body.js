@@ -19,7 +19,7 @@ const Body = () => {
       <View style={styles.inner}>
         <Input />
         <Output players={players} />
-        {players.length >= 2 && <Button text="PLAY" onPress={nextScreen} />}
+        {players?.length >= 2 && <Button text="PLAY" onPress={nextScreen} />}
       </View>
     </View>
   );

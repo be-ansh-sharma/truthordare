@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Control from 'components/control/Control';
 import Info from 'components/info/Info';
 import { fetchTruthORDare } from 'content/ContentHelper';
-import { updateCurrentGame } from 'store/action/game';
+import { updateGame, updateScore } from 'store/action/game';
 import DialogWorker from 'components/dialog/DialogWorker';
 import { useNavigation } from '@react-navigation/native';
 const vw = Dimensions.get('window').width;
@@ -29,21 +29,19 @@ const Body = () => {
       setChoice(control === 'positive' ? 'truth' : 'dare');
     } else {
       runAnimation(exitAnimated).start(() => {
+        dispatch(
+          updateGame({
+            level: gameObject.level,
+            id: gameObject[choice].id,
+          }),
+        );
+        dispatch(updateScore(currentIndex, choice, control === 'positive'));
+        runAnimation(enterAnimated).reset();
         if (currentIndex === players.length - 1) {
           setCurrentIndex(0);
         } else {
           setCurrentIndex(currentIndex + 1);
         }
-        // let currentGameObject = gameObject[choice];
-        // currentGame.completed[currentGameObject.gender][gameObject.level][
-        //   choice
-        // ].push(currentGameObject.index);
-        // currentGame.level = gameObject.level;
-        // dispatch(updateCurrentGame(currentGame));
-        if (control === 'positive') {
-          // update score async
-        }
-        runAnimation(enterAnimated).reset();
         setChoice(null);
         setGameObject({});
       });
@@ -94,7 +92,7 @@ const Body = () => {
     },
   });
 
-  const scoreHandler = () => navigation.navigate('LeaderBoard');
+  const scoreHandler = () => navigation.navigate('Leaderboard');
 
   const newGameHandler = () => navigation.popToTop();
 
@@ -105,13 +103,13 @@ const Body = () => {
       );
       fetchTruthORDare(
         gameMode,
-        players[currentIndex].gender,
+        players[currentIndex].gender === 'M' ? 'male' : 'female',
         level,
         completedIds,
       )
         .then(result => setGameObject(result))
         .catch(error => {
-          if (error.NOCARD) {
+          if (error?.NOCARD) {
             setDialog('NoCard');
           }
           setDialog('General');
@@ -161,8 +159,8 @@ const Body = () => {
       {!!dialog && (
         <DialogWorker
           Name={dialog}
-          positiveHandler={newGameHandler}
-          negativeHandler={scoreHandler}
+          positiveHandler={scoreHandler}
+          negativeHandler={newGameHandler}
         />
       )}
     </>
