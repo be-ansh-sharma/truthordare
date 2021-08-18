@@ -92,7 +92,7 @@ const Body = () => {
     },
   });
 
-  const scoreHandler = () => navigation.navigate('Leaderboard');
+  const scoreHandler = () => navigation.replace('Leaderboard');
 
   const newGameHandler = () => navigation.popToTop();
 
@@ -111,8 +111,9 @@ const Body = () => {
         .catch(error => {
           if (error?.NOCARD) {
             setDialog('NoCard');
+          } else {
+            setDialog('General');
           }
-          setDialog('General');
         });
     }
   }, [

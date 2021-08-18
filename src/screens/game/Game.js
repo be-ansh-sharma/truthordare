@@ -22,7 +22,7 @@ const Players = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <Header title={null} mode="compact" showBack showSettings />
+      <Header mode="compact" showBack showLeaderBoard />
       <Body />
     </View>
   );

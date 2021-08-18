@@ -9,6 +9,7 @@ import Mode from 'screens/setup/mode/Mode';
 import Players from 'screens/setup/players/Players';
 import Game from 'screens/game/Game';
 import Leaderboard from 'screens/leaderboard/Leaderboard';
+import Settings from 'screens/settings/Settings';
 
 const Stack = createStackNavigator();
 
@@ -52,6 +53,7 @@ export const HomeNavigation = () => {
       <Stack.Screen name="Players" component={Players} />
       <Stack.Screen name="Game" component={Game} />
       <Stack.Screen name="Leaderboard" component={Leaderboard} />
+      <Stack.Screen name="Settings" component={Settings} />
     </Stack.Navigator>
   );
 };

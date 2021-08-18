@@ -21,7 +21,7 @@ const Body = () => {
 
   const continueHandler = () => navigation.navigate('Game');
 
-  const settingHandler = () => navigation.navigate('Setting');
+  const settingHandler = () => navigation.navigate('Settings');
 
   return (
     <View style={styles.container}>

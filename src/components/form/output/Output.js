@@ -25,7 +25,9 @@ const Output = ({ players }) => {
         colors={
           item.gender === 'M' ? genderGradient.male : genderGradient.female
         }>
-        <Text style={styles.name}>{item.name}</Text>
+        <Text numberOfLines={1} style={styles.name}>
+          {item.name}
+        </Text>
         <Text style={styles.gender}>{item.gender}</Text>
         <View style={styles.delete}>
           <Icon

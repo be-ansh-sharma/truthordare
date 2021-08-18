@@ -1,28 +1,20 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { View, Image } from 'react-native';
 import { Text } from 'react-native-paper';
 import styles from './Header.style';
 import Icon from 'components/Icons/Icon';
 import { useNavigation } from '@react-navigation/native';
 import Pressable from 'components/pressable/Pressable';
-import LottieView from 'lottie-react-native';
 
-const Header = ({ mode, title, showBack, showSettings }) => {
+const Header = ({ mode, title, showBack, showSettings, showLeaderBoard }) => {
   let modeStyles;
   const navigation = useNavigation();
-  const settingRef = useRef();
 
   const goBack = () => navigation.goBack();
 
-  const settingHandler = () => {
-    console.log('asd');
-  };
+  const settingHandler = () => navigation.navigate('Settings');
 
-  useEffect(() => {
-    const timer = setInterval(() => settingRef?.current?.play(), 7000);
-
-    () => clearInterval(timer);
-  }, []);
+  const scoreHandler = () => navigation.navigate('Leaderboard');
 
   if (mode === 'compact') {
     modeStyles = {
@@ -65,12 +57,12 @@ const Header = ({ mode, title, showBack, showSettings }) => {
         </View>
         {showSettings && (
           <Pressable onPress={settingHandler} style={styles.settingWrapper}>
-            <LottieView
-              ref={settingRef}
-              style={styles.setting}
-              loop={false}
-              source={require('assets/animations/setting.json')}
-            />
+            <Icon name="settings-outline" size={25} color="white" disabled />
+          </Pressable>
+        )}
+        {showLeaderBoard && (
+          <Pressable onPress={scoreHandler} style={styles.settingWrapper}>
+            <Icon name="trophy-outline" size={25} color="white" disabled />
           </Pressable>
         )}
       </View>
