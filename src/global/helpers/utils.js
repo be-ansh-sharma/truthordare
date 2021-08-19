@@ -1,5 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { productionIDs, testIDs } from 'global/constants';
+import AdMob from '@react-native-admob/admob';
 
+let AD_MOB_INIT = false;
 export const getFromStorage = async key => {
   try {
     const result = await AsyncStorage.getItem(key);
@@ -22,5 +25,15 @@ export const clearStorage = async () => {
     await AsyncStorage.clear();
   } catch (err) {
     throw err;
+  }
+};
+
+export const getadUnitID = key => {
+  return !__DEV__ ? productionIDs[key] : testIDs[key];
+};
+
+export const initAdMob = async () => {
+  if (!AD_MOB_INIT) {
+    await AdMob.initialize();
   }
 };

@@ -3,12 +3,14 @@ import {
   FETCH_INFORMATION,
   INITIATE_GAME,
   SET_VERSION_NUMBER,
+  UPDATE_ADS_PERSONALIZATIONS,
 } from 'store/action/information';
 import { CLEAN_GAME } from 'store/action/game';
 const initialState = {
   isAdsShown: true,
   isGameInProgress: null,
   versionNumber: null,
+  personalizedAds: true,
 };
 
 const information = (state = initialState, action) => {
@@ -35,6 +37,12 @@ const information = (state = initialState, action) => {
       state = {
         ...state,
         versionNumber: action.versionNumber,
+      };
+      break;
+    case UPDATE_ADS_PERSONALIZATIONS:
+      state = {
+        ...state,
+        personalizedAds: !state.personalizedAds,
       };
       break;
     default:

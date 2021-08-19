@@ -1,3 +1,4 @@
+import { COLOR } from 'global/styles';
 import React from 'react';
 import { Pressable as AppPressable } from 'react-native';
 
@@ -8,6 +9,11 @@ const Pressable = ({
   android_ripple = null,
   style,
 }) => {
+  if (android_ripple) {
+    android_ripple = {
+      color: COLOR.primary,
+    };
+  }
   return (
     <AppPressable
       onPress={onPress}

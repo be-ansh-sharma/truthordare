@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { COLOR } from 'global/styles';
 import {
   NavigationContainer,
@@ -9,8 +9,8 @@ import {
   Provider as PaperProvider,
   configureFonts,
 } from 'react-native-paper';
-import { StatusBar, LogBox } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { StatusBar, LogBox, View } from 'react-native';
+import { useDispatch } from 'react-redux';
 import { fontConfig } from 'global/constants';
 import { HomeNavigation } from 'navigations/AppNavigation';
 import Splash from 'components/splash/Splash';
@@ -35,6 +35,7 @@ const CombinedDarkTheme = {
 const App = () => {
   const dispatch = useDispatch();
   const [isReady, setIsReady] = useState(false);
+  const navigationRef = useRef();
 
   useEffect(() => {
     Promise.all([dispatch(fetchInformation()), dispatch(fetchGame())])
@@ -49,9 +50,11 @@ const App = () => {
   if (!isReady) {
     return <Splash />;
   }
+
+  console.log(navigationRef?.current?.getCurrentRoute());
   return (
     <PaperProvider theme={CombinedDarkTheme}>
-      <NavigationContainer theme={CombinedDarkTheme}>
+      <NavigationContainer ref={navigationRef} theme={CombinedDarkTheme}>
         <StatusBar backgroundColor={COLOR.dark} />
         <HomeNavigation />
       </NavigationContainer>

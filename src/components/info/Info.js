@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import { Text } from 'react-native-paper';
 
 const Info = ({ choice, gender }) => {
@@ -8,11 +7,10 @@ const Info = ({ choice, gender }) => {
   }
 
   return (
-    <View>
-      <Text>
-        {choice} {gender}
-      </Text>
-    </View>
+    <Text style={{ textAlign: 'center', fontStyle: 'italic' }}>
+      Did {gender === 'M' ? 'he' : 'she'}{' '}
+      {choice === 'truth' ? 'answered?' : 'do it?'}
+    </Text>
   );
 };
 

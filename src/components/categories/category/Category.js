@@ -1,4 +1,3 @@
-import Pressable from 'components/pressable/Pressable';
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { Text, Divider } from 'react-native-paper';

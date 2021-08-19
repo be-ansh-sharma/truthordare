@@ -13,14 +13,6 @@ import Settings from 'screens/settings/Settings';
 
 const Stack = createStackNavigator();
 
-// export const GameNavigation = () => {
-//   return (
-//     <Drawer.Navigator initialRouteName="Home">
-//       <Drawer.Screen name="Game" component={GameScreen} />
-//     </Drawer.Navigator>
-//   );
-// };
-
 export const HomeNavigationTest = () => {
   return (
     <Stack.Navigator

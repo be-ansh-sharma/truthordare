@@ -3,6 +3,7 @@ export const FETCH_INFORMATION = 'FETCH_INFORMATION';
 export const UPDATE_SETUP = 'UPDATE_SETUP';
 export const INITIATE_GAME = 'INITIATE_GAME';
 export const SET_VERSION_NUMBER = 'SET_VERSION_NUMBER';
+export const UPDATE_ADS_PERSONALIZATIONS = 'UPDATE_ADS_PERSONALIZATIONS';
 
 export const fetchInformation = () => {
   return async dispatch => {
@@ -28,5 +29,11 @@ export const setVersionNumber = versionNumber => {
   return {
     type: SET_VERSION_NUMBER,
     versionNumber,
+  };
+};
+
+export const updateAds = () => {
+  return {
+    type: UPDATE_ADS_PERSONALIZATIONS,
   };
 };
