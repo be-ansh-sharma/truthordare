@@ -13,18 +13,22 @@ import Settings from 'screens/settings/Settings';
 
 const Stack = createStackNavigator();
 
-export const HomeNavigationTest = () => {
+export const GlobalNavigation = () => {
   return (
     <Stack.Navigator
       initialRouteName="HomeNavigation"
-      screenOptions={{ headerShown: false }}>
+      screenOptions={{
+        headerShown: false,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}>
+      <Stack.Screen name="HomeStack" component={HomeNavigation} />
       <Stack.Screen
         name="Modal"
         component={Modal}
         options={({ route }) => {
           let { title, headerShown } = route?.params;
           return {
-            headerShown: headerShown === false ? false : true,
+            headerShown: headerShown === true ? true : false,
             title: title || 'Truth or Dare',
           };
         }}

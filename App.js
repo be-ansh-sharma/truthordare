@@ -12,7 +12,7 @@ import {
 import { StatusBar, LogBox, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { fontConfig } from 'global/constants';
-import { HomeNavigation } from 'navigations/AppNavigation';
+import { GlobalNavigation } from 'navigations/AppNavigation';
 import Splash from 'components/splash/Splash';
 import { fetchGame } from 'store/action/game';
 import { fetchInformation } from 'store/action/information';
@@ -56,7 +56,7 @@ const App = () => {
     <PaperProvider theme={CombinedDarkTheme}>
       <NavigationContainer ref={navigationRef} theme={CombinedDarkTheme}>
         <StatusBar backgroundColor={COLOR.dark} />
-        <HomeNavigation />
+        <GlobalNavigation />
       </NavigationContainer>
     </PaperProvider>
   );
