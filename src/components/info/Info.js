@@ -7,7 +7,7 @@ const Info = ({ choice, gender }) => {
   }
 
   return (
-    <Text style={{ textAlign: 'center', fontStyle: 'italic' }}>
+    <Text style={{ textAlign: 'center', fontStyle: 'italic', fontSize: 14 }}>
       Did {gender === 'M' ? 'he' : 'she'}{' '}
       {choice === 'truth' ? 'answered?' : 'do it?'}
     </Text>

@@ -4,6 +4,7 @@ export const UPDATE_SETUP = 'UPDATE_SETUP';
 export const INITIATE_GAME = 'INITIATE_GAME';
 export const SET_VERSION_NUMBER = 'SET_VERSION_NUMBER';
 export const UPDATE_ADS_PERSONALIZATIONS = 'UPDATE_ADS_PERSONALIZATIONS';
+export const SET_REWARD_TIME = 'SET_REWARD_TIME';
 
 export const fetchInformation = () => {
   return async dispatch => {
@@ -35,5 +36,12 @@ export const setVersionNumber = versionNumber => {
 export const updateAds = () => {
   return {
     type: UPDATE_ADS_PERSONALIZATIONS,
+  };
+};
+
+export const setRewardTime = time => {
+  return {
+    type: SET_REWARD_TIME,
+    time,
   };
 };

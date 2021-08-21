@@ -4,10 +4,11 @@ import {
   INITIATE_GAME,
   SET_VERSION_NUMBER,
   UPDATE_ADS_PERSONALIZATIONS,
+  SET_REWARD_TIME,
 } from 'store/action/information';
 import { CLEAN_GAME } from 'store/action/game';
 const initialState = {
-  isAdsShown: true,
+  adsRewardTime: null,
   isGameInProgress: null,
   versionNumber: null,
   personalizedAds: true,
@@ -43,6 +44,11 @@ const information = (state = initialState, action) => {
       state = {
         ...state,
         personalizedAds: !state.personalizedAds,
+      };
+    case SET_REWARD_TIME:
+      state = {
+        ...state,
+        adsRewardTime: action.time,
       };
       break;
     default:

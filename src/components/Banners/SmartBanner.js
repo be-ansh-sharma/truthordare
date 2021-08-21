@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Dimensions, View } from 'react-native';
 import { BannerAd } from '@react-native-admob/admob';
-import { getadUnitID, initAdMob } from 'global/helpers/utils';
-import { useSelector } from 'react-redux';
+import { getadUnitID, initAdMob, getHourDiff } from 'global/helpers/utils';
+import { useDispatch, useSelector } from 'react-redux';
+import { setRewardTime } from 'store/action/information';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -12,12 +13,13 @@ const SmartBanner = () => {
   const [loading, setLoading] = useState(true);
   const bannerError = () => setError(true);
   const adsReceived = () => setHasAds(true);
-  const personalizedAds = useSelector(
-    state => state.information.personalizedAds,
+  const dispatch = useDispatch();
+  const { personalizedAds, adsRewardTime } = useSelector(
+    state => state.information,
   );
 
   useEffect(() => {
-    if (loading) {
+    if (loading && !adsRewardTime) {
       const init = async () => {
         await initAdMob();
         setLoading(false);
@@ -25,6 +27,16 @@ const SmartBanner = () => {
       init();
     }
   }, []);
+
+  console.log(adsRewardTime);
+  if (adsRewardTime) {
+    console.log(getHourDiff(adsRewardTime));
+    if (getHourDiff(adsRewardTime) > 4) {
+      dispatch(setRewardTime(null));
+    } else {
+      return null;
+    }
+  }
 
   if (error || loading) {
     return null;

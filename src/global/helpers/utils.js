@@ -1,8 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { productionIDs, testIDs } from 'global/constants';
 import AdMob from '@react-native-admob/admob';
-
+import dayjs from 'dayjs';
 let AD_MOB_INIT = false;
+
 export const getFromStorage = async key => {
   try {
     const result = await AsyncStorage.getItem(key);
@@ -36,4 +37,12 @@ export const initAdMob = async () => {
   if (!AD_MOB_INIT) {
     await AdMob.initialize();
   }
+};
+
+export const getCurrentDate = () => {
+  return dayjs().toString();
+};
+
+export const getHourDiff = time => {
+  return dayjs().diff(time, 'hour');
 };

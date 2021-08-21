@@ -10,6 +10,7 @@ import { updateAds } from 'store/action/information';
 import Icon from 'components/Icons/Icon';
 import { COLOR } from 'global/styles';
 import { useNavigation } from '@react-navigation/core';
+import RewardBanner from 'components/Banners/RewardBanner';
 
 const Body = () => {
   const [dialog, setDialog] = useState(false);
@@ -36,6 +37,12 @@ const Body = () => {
       type: 'about',
       title: 'About',
     });
+  };
+
+  const rateUsHandler = () => {
+    Linking.openURL(
+      'https://play.google.com/store/apps/details?id=com.epoch.truthordare',
+    ).catch(err => console.error('An error occurred', err));
   };
 
   return (
@@ -65,7 +72,7 @@ const Body = () => {
           </Pressable>
           <Pressable onPress={donationHandler} android_ripple>
             <List.Item
-              title="Help me with a Pizza"
+              title="Buy me a Pizza"
               right={() => (
                 <Icon
                   name="pizza-outline"
@@ -76,6 +83,17 @@ const Body = () => {
                 />
               )}
             />
+          </Pressable>
+          <Pressable
+            onPress={() => openDialog('RemoveAdsTemporary')}
+            android_ripple>
+            <List.Item title="Remove Ads for next 4 hours" />
+          </Pressable>
+          <Pressable onPress={() => openDialog('RemoveAds')} android_ripple>
+            <List.Item title="Remove Ads Permanently" />
+          </Pressable>
+          <Pressable onPress={rateUsHandler} android_ripple>
+            <List.Item title="Rate Us!" />
           </Pressable>
           <Pressable onPress={aboutHandler} android_ripple>
             <List.Item title="About" />

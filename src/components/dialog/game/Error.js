@@ -2,7 +2,7 @@ import React from 'react';
 import { Dialog, Button, Portal, Text } from 'react-native-paper';
 import { View } from 'react-native';
 
-const NoCard = ({ positiveHandler, negativeHandler, title, body }) => {
+const Error = ({ positiveHandler, negativeHandler, title, body }) => {
   return (
     <View>
       <Portal>
@@ -23,4 +23,4 @@ const NoCard = ({ positiveHandler, negativeHandler, title, body }) => {
   );
 };
 
-export default NoCard;
+export default Error;
