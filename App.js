@@ -51,7 +51,6 @@ const App = () => {
     return <Splash />;
   }
 
-  console.log(navigationRef?.current?.getCurrentRoute());
   return (
     <PaperProvider theme={CombinedDarkTheme}>
       <NavigationContainer ref={navigationRef} theme={CombinedDarkTheme}>

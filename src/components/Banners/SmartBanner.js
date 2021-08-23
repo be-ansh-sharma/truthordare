@@ -28,9 +28,7 @@ const SmartBanner = () => {
     }
   }, []);
 
-  console.log(adsRewardTime);
   if (adsRewardTime) {
-    console.log(getHourDiff(adsRewardTime));
     if (getHourDiff(adsRewardTime) > 4) {
       dispatch(setRewardTime(null));
     } else {

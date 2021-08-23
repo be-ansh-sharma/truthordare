@@ -6,7 +6,7 @@ import {
   UPDATE_ADS_PERSONALIZATIONS,
   SET_REWARD_TIME,
 } from 'store/action/information';
-import { CLEAN_GAME } from 'store/action/game';
+import { CLEAN_GAME, UPDATE_ADS } from 'store/action/game';
 const initialState = {
   adsRewardTime: null,
   isGameInProgress: null,
@@ -49,6 +49,15 @@ const information = (state = initialState, action) => {
       state = {
         ...state,
         adsRewardTime: action.time,
+      };
+      break;
+    case UPDATE_ADS:
+      state = {
+        ...state,
+        adsRewardTime:
+          'adsRewardTime' in action
+            ? action.adsRewardTime
+            : state.adsRewardTime,
       };
       break;
     default:

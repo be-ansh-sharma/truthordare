@@ -10,7 +10,6 @@ import { updateAds } from 'store/action/information';
 import Icon from 'components/Icons/Icon';
 import { COLOR } from 'global/styles';
 import { useNavigation } from '@react-navigation/core';
-import RewardBanner from 'components/Banners/RewardBanner';
 
 const Body = () => {
   const [dialog, setDialog] = useState(false);
@@ -88,9 +87,6 @@ const Body = () => {
             onPress={() => openDialog('RemoveAdsTemporary')}
             android_ripple>
             <List.Item title="Remove Ads for next 4 hours" />
-          </Pressable>
-          <Pressable onPress={() => openDialog('RemoveAds')} android_ripple>
-            <List.Item title="Remove Ads Permanently" />
           </Pressable>
           <Pressable onPress={rateUsHandler} android_ripple>
             <List.Item title="Rate Us!" />

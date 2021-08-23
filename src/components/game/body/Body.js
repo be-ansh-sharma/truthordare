@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Control from 'components/control/Control';
 import Info from 'components/info/Info';
 import { fetchTruthORDare } from 'content/ContentHelper';
-import { updateGame, updateScore } from 'store/action/game';
+import { updateGame, updateScore, validateAds } from 'store/action/game';
 import DialogWorker from 'components/dialog/DialogWorker';
 import { useNavigation } from '@react-navigation/native';
 const vw = Dimensions.get('window').width;
@@ -36,6 +36,7 @@ const Body = () => {
           }),
         );
         dispatch(updateScore(currentIndex, choice, control === 'positive'));
+        dispatch(validateAds());
         runAnimation(enterAnimated).reset();
         if (currentIndex === players.length - 1) {
           setCurrentIndex(0);

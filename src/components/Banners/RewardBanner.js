@@ -2,12 +2,20 @@ import { useEffect } from 'react';
 import { useRewardedAd } from '@react-native-admob/admob';
 import { getadUnitID, getCurrentDate } from 'global/helpers/utils';
 import { setRewardTime } from 'store/action/information';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const RewardBanner = ({ rewardHandler }) => {
   const dispatch = useDispatch();
+  const personalizedAds = useSelector(
+    state => state.information.personalizedAds,
+  );
   const { adLoadError, adLoaded, show, reward } = useRewardedAd(
     getadUnitID('reward'),
+    {
+      requestOptions: {
+        requestNonPersonalizedAdsOnly: !personalizedAds,
+      },
+    },
   );
 
   useEffect(() => {
@@ -18,7 +26,6 @@ const RewardBanner = ({ rewardHandler }) => {
 
   useEffect(() => {
     if (adLoaded) {
-      console.log('asdasdasda');
       show();
     }
   }, [adLoaded]);

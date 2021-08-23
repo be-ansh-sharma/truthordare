@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { productionIDs, testIDs } from 'global/constants';
-import AdMob from '@react-native-admob/admob';
+import AdMob, { InterstitialAd } from '@react-native-admob/admob';
 import dayjs from 'dayjs';
 let AD_MOB_INIT = false;
 
@@ -45,4 +45,18 @@ export const getCurrentDate = () => {
 
 export const getHourDiff = time => {
   return dayjs().diff(time, 'hour');
+};
+
+export const showFullScreenAd = async personalizedAds => {
+  try {
+    let _adv = InterstitialAd.createAd(getadUnitID('fullScreen'), {
+      requestNonPersonalizedAdsOnly: !personalizedAds,
+    });
+    await _adv.load({
+      requestNonPersonalizedAdsOnly: !personalizedAds,
+    });
+    await _adv.show();
+  } catch (err) {
+    console.log(err);
+  }
 };

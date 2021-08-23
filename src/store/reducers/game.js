@@ -7,12 +7,15 @@ import {
   UPDATE_GAME,
   CLEAN_GAME,
   UPDATE_SCORE,
+  UPDATE_ADS,
 } from 'store/action/game';
 const initialState = {
   gameMode: '',
   players: [],
   level: 1,
   completedIds: [],
+  currentAdCounter: 1,
+  adThreshold: 5,
 };
 
 const game = (state = initialState, action) => {
@@ -95,6 +98,15 @@ const game = (state = initialState, action) => {
       state = {
         ...state,
         players: action.players,
+      };
+      break;
+    case UPDATE_ADS:
+      state = {
+        ...state,
+        currentAdCounter:
+          'currentAdCounter' in action
+            ? action.currentAdCounter
+            : state.currentAdCounter,
       };
       break;
     default:
