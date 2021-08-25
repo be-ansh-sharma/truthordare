@@ -45,7 +45,6 @@ export const fetchTruthORDare = async (
   completedIds,
 ) => {
   try {
-    console.log('level is ' + level);
     let result = await getRandomRow(category, gender, level, completedIds);
     if (result?.updateLevel && !Array.isArray(level) && level !== 3) {
       return await fetchTruthORDare(category, gender, level + 1, completedIds);
