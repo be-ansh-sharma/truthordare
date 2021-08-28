@@ -5,6 +5,8 @@ export const INITIATE_GAME = 'INITIATE_GAME';
 export const SET_VERSION_NUMBER = 'SET_VERSION_NUMBER';
 export const UPDATE_ADS_PERSONALIZATIONS = 'UPDATE_ADS_PERSONALIZATIONS';
 export const SET_REWARD_TIME = 'SET_REWARD_TIME';
+export const UPDATE_CONSENT = 'UPDATE_CONSENT';
+export const UPDATE_ADULT_MODE = 'UPDATE_ADULT_MODE';
 
 export const fetchInformation = () => {
   return async dispatch => {
@@ -43,5 +45,19 @@ export const setRewardTime = time => {
   return {
     type: SET_REWARD_TIME,
     time,
+  };
+};
+
+export const updateConsent = consent => {
+  return {
+    type: UPDATE_CONSENT,
+    consent,
+  };
+};
+
+export const updateAdultMode = mode => {
+  return {
+    type: UPDATE_ADULT_MODE,
+    mode,
   };
 };

@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { View, Dimensions } from 'react-native';
-import { categories } from 'global/constants';
 import Category from './category/Category';
 import styles from './Categories.style';
 import Carousel from 'react-native-snap-carousel';
@@ -8,7 +7,7 @@ import { setMode } from 'store/action/game';
 import { useDispatch } from 'react-redux';
 const windowWidth = Dimensions.get('window').width;
 
-const Categories = () => {
+const Categories = ({ categories }) => {
   const carouselRef = useRef();
   const dispatch = useDispatch();
 

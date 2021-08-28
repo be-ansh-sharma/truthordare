@@ -5,6 +5,8 @@ import {
   SET_VERSION_NUMBER,
   UPDATE_ADS_PERSONALIZATIONS,
   SET_REWARD_TIME,
+  UPDATE_ADULT_MODE,
+  UPDATE_CONSENT,
 } from 'store/action/information';
 import { CLEAN_GAME, UPDATE_ADS } from 'store/action/game';
 const initialState = {
@@ -12,6 +14,8 @@ const initialState = {
   isGameInProgress: null,
   versionNumber: null,
   personalizedAds: true,
+  adultMode: true,
+  consentProvided: false,
 };
 
 const information = (state = initialState, action) => {
@@ -58,6 +62,18 @@ const information = (state = initialState, action) => {
           'adsRewardTime' in action
             ? action.adsRewardTime
             : state.adsRewardTime,
+      };
+      break;
+    case UPDATE_ADULT_MODE:
+      state = {
+        ...state,
+        adultMode: action.mode,
+      };
+      break;
+    case UPDATE_CONSENT:
+      state = {
+        ...state,
+        consentProvided: action.consent,
       };
       break;
     default:

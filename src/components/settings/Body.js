@@ -5,19 +5,32 @@ import { List, Text } from 'react-native-paper';
 import DialogWorker from 'components/dialog/DialogWorker';
 import Pressable from 'components/pressable/Pressable';
 import Switch from 'components/switch/Switch';
-import { useDispatch } from 'react-redux';
-import { updateAds } from 'store/action/information';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateAds, updateAdultMode } from 'store/action/information';
 import Icon from 'components/Icons/Icon';
 import { COLOR } from 'global/styles';
 import { useNavigation } from '@react-navigation/core';
+import { cleanGame } from 'store/action/game';
 
 const Body = () => {
   const [dialog, setDialog] = useState(false);
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const { adultMode, personalizedAds } = useSelector(
+    state => state.information,
+  );
   const openDialog = dialog => setDialog(dialog);
   const closeDialogHandler = () => setDialog(false);
-  const switchChangeHandler = () => dispatch(updateAds());
+  const adChangeHandler = () => dispatch(updateAds());
+
+  const adultModeChangeHandler = value => {
+    if (value !== adultMode) {
+      dispatch(updateAdultMode(value));
+      if (adultMode && !value) {
+        dispatch(cleanGame());
+      }
+    }
+  };
 
   const feedbackHandler = () => {
     Linking.openURL(
@@ -49,12 +62,24 @@ const Body = () => {
       <View style={styles.inner}>
         <List.Section>
           <Text style={styles.heading}>SETTINGS</Text>
-          <Pressable onPress={null}>
-            <List.Item
-              title="Show Personalized Ads"
-              right={() => <Switch switchChangeHandler={switchChangeHandler} />}
-            />
-          </Pressable>
+          <List.Item
+            title="Show Personalized Ads"
+            right={() => (
+              <Switch
+                switchChangeHandler={adChangeHandler}
+                value={personalizedAds}
+              />
+            )}
+          />
+          <List.Item
+            title="Adult Mode"
+            right={() => (
+              <Switch
+                switchChangeHandler={adultModeChangeHandler}
+                value={adultMode}
+              />
+            )}
+          />
           <Pressable onPress={feedbackHandler} android_ripple>
             <List.Item
               title="Feedback"

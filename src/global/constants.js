@@ -26,8 +26,9 @@ export const testIDs = {
 };
 
 export const productionIDs = {
-  banner: '',
-  fullScreen: '',
+  banner: 'ca-app-pub-2290547364208155/8713101217',
+  fullScreen: 'ca-app-pub-2290547364208155/9059396208',
+  reward: 'ca-app-pub-2290547364208155/3523164349',
 };
 
 export const categories = [
@@ -46,32 +47,11 @@ export const categories = [
       'A Classic mode for light hearted group. For any age group that just want to have to light fun. Nothing too crazy.',
   },
   {
-    name: 'Hot',
-    value: 'Hot',
-    color: ['#333333', '#dd1818'],
-    description:
-      "A bit of the teasing. Show us your chamber to secrets. Let's raise the temprature",
-  },
-  {
     name: 'Couple Normal',
     value: 'CoupleNormal',
     color: ['#CB356B', '#BD3F32'],
     description:
       "Vanilla couples needs a vanilla mode. Meant to play with your SO to spice up the relationship. Don't get too crazy kids",
-  },
-  {
-    name: 'Couple Dirty',
-    value: 'CoupleDirty',
-    color: ['#8A2387', '#E94057', '#F27121'],
-    description:
-      'Now We are talking! Let your significant other know how dirty you are. Add spice to your life. This mode is not for kids.',
-  },
-  {
-    name: 'Taboo & Kinky',
-    value: 'TabooKinky',
-    color: ['#333333', '#dd1818'],
-    description:
-      'Break the chains and be the champian of everything Kinky. Strictly 18+',
   },
   {
     name: 'Battle',
@@ -86,6 +66,30 @@ export const categories = [
     color: ['#F2994A', '#F2C94C'],
     description:
       'We dare you to try this. This is the Ultimate challenge. Nothing is too much here. Will you take the challenge?',
+  },
+];
+
+export const adultCategories = [
+  {
+    name: 'Hot',
+    value: 'Hot',
+    color: ['#333333', '#dd1818'],
+    description:
+      "A bit of the teasing. Show us your chamber to secrets. Let's raise the temprature",
+  },
+  {
+    name: 'Couple Dirty',
+    value: 'CoupleDirty',
+    color: ['#8A2387', '#E94057', '#F27121'],
+    description:
+      'Now We are talking! Let your significant other know how dirty you are. Add spice to your life. This mode is not for kids.',
+  },
+  {
+    name: 'Taboo & Kinky',
+    value: 'TabooKinky',
+    color: ['#333333', '#dd1818'],
+    description:
+      'Break the chains and be the champian of everything Kinky. Strictly 18+',
   },
 ];
 
