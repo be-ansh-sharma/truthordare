@@ -35,9 +35,10 @@ export const setVersionNumber = versionNumber => {
   };
 };
 
-export const updateAds = () => {
+export const updatePersonlization = personalizedAds => {
   return {
     type: UPDATE_ADS_PERSONALIZATIONS,
+    personalizedAds,
   };
 };
 
@@ -48,10 +49,9 @@ export const setRewardTime = time => {
   };
 };
 
-export const updateConsent = consent => {
+export const updateConsent = () => {
   return {
     type: UPDATE_CONSENT,
-    consent,
   };
 };
 

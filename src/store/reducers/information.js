@@ -47,8 +47,9 @@ const information = (state = initialState, action) => {
     case UPDATE_ADS_PERSONALIZATIONS:
       state = {
         ...state,
-        personalizedAds: !state.personalizedAds,
+        personalizedAds: action.personalizedAds,
       };
+      break;
     case SET_REWARD_TIME:
       state = {
         ...state,
@@ -73,7 +74,7 @@ const information = (state = initialState, action) => {
     case UPDATE_CONSENT:
       state = {
         ...state,
-        consentProvided: action.consent,
+        consentProvided: true,
       };
       break;
     default:

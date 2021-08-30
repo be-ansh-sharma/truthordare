@@ -21,7 +21,7 @@ const Body = () => {
   );
   const openDialog = dialog => setDialog(dialog);
   const closeDialogHandler = () => setDialog(false);
-  const adChangeHandler = () => dispatch(updateAds());
+  const adChangeHandler = value => dispatch(updateAds(value));
 
   const adultModeChangeHandler = value => {
     if (value !== adultMode) {

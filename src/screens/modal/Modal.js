@@ -2,8 +2,9 @@ import React from 'react';
 import About from 'components/settings/about/About';
 import Attribution from 'components/settings/attribution/Attribution';
 import Privacy from 'components/settings/privacy/Privacy';
+import Consent from 'components/settings/consent/Consent';
 
-const Modal = ({ route, navigation }) => {
+const Modal = ({ route }) => {
   const { type } = route?.params;
   let Component;
   switch (type) {
@@ -15,6 +16,9 @@ const Modal = ({ route, navigation }) => {
       break;
     case 'attribution':
       Component = Attribution;
+      break;
+    case 'consent':
+      Component = Consent;
       break;
   }
 
