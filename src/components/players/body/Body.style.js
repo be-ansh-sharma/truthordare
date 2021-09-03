@@ -15,4 +15,8 @@ export default StyleSheet.create({
   output: {
     flex: 1,
   },
+  text: {
+    textAlign: 'center',
+    fontStyle: 'italic',
+  },
 });

@@ -7,7 +7,10 @@ const Splash = () => {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor={COLOR.dark} />
-      <Image source={require('assets/images/splash.png')} />
+      <Image
+        source={require('assets/images/splash.png')}
+        style={styles.splash}
+      />
     </View>
   );
 };

@@ -8,4 +8,8 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: COLOR.dark,
   },
+  splash: {
+    height: 100,
+    aspectRatio: 1,
+  },
 });

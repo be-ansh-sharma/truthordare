@@ -1,11 +1,9 @@
-import { Battle } from './Battle';
 import { Classic } from './Classic';
 import { CoupleDirty } from './CoupleDirty';
 import { CoupleNormal } from './CoupleNormal';
 import { Hot } from './Hot';
 import { TabooKinky } from './TabooKinky';
 import { Teens } from './Teens';
-import { Ultimate } from './Ultimate';
 import {
   dropRows,
   getRandomRow,
@@ -14,8 +12,6 @@ import {
 
 const getMode = mode => {
   switch (mode) {
-    case 'Battle':
-      return Battle;
     case 'Classic':
       return Classic;
     case 'CoupleDirty':
@@ -28,8 +24,6 @@ const getMode = mode => {
       return TabooKinky;
     case 'Teens':
       return Teens;
-    case 'Ultimate':
-      return Ultimate;
   }
 };
 
@@ -72,14 +66,12 @@ export const setupContent = async () => {
   try {
     await dropRows();
     [
-      'Battle',
       'Classic',
       'CoupleDirty',
       'CoupleNormal',
       'Hot',
       'TabooKinky',
       'Teens',
-      'Ultimate',
     ].forEach(mode => {
       let selected = getMode(mode);
       pushContent(selected);

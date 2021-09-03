@@ -17,7 +17,7 @@ const Card = ({ gender, name, text }) => {
       </View>
       <Divider style={styles.divider} />
       <View style={styles.inner}>
-        <Text style={text ? [styles.choice, styles.text] : [styles.choice]}>
+        <Text style={text ? [styles.text] : [styles.choice]}>
           {text ? text : 'Truth or Dare?'}
         </Text>
       </View>

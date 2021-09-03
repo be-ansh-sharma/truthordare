@@ -8,7 +8,6 @@ export default StyleSheet.create({
     alignContent: 'center',
     height: '80%',
     elevation: 14,
-    //paddingHorizontal: '7%',
     marginHorizontal: '6%',
   },
   divider: {
@@ -34,5 +33,9 @@ export default StyleSheet.create({
   choice: {
     fontSize: 30,
     fontFamily: 'Cartoon',
+  },
+  text: {
+    fontSize: 20,
+    marginHorizontal: 8,
   },
 });

@@ -53,20 +53,20 @@ export const categories = [
     description:
       "Vanilla couples needs a vanilla mode. Meant to play with your SO to spice up the relationship. Don't get too crazy kids",
   },
-  {
-    name: 'Battle',
-    value: 'Battle',
-    color: ['#654ea3', '#eaafc8'],
-    description:
-      "Anything goes here. We won't even give you any option to choose. Player will be chosen at random. Look at me! I am the caption now.",
-  },
-  {
-    name: 'Ultimate',
-    value: 'Ultimate',
-    color: ['#F2994A', '#F2C94C'],
-    description:
-      'We dare you to try this. This is the Ultimate challenge. Nothing is too much here. Will you take the challenge?',
-  },
+  // {
+  //   name: 'Battle',
+  //   value: 'Battle',
+  //   color: ['#654ea3', '#eaafc8'],
+  //   description:
+  //     "Anything goes here. We won't even give you any option to choose. Player will be chosen at random. Look at me! I am the caption now.",
+  // },
+  // {
+  //   name: 'Ultimate',
+  //   value: 'Ultimate',
+  //   color: ['#F2994A', '#F2C94C'],
+  //   description:
+  //     'We dare you to try this. This is the Ultimate challenge. Nothing is too much here. Will you take the challenge?',
+  // },
 ];
 
 export const adultCategories = [

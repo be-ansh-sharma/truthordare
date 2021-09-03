@@ -190,4 +190,7 @@ export const Teens = [
   ['Teens', 'both', 'dare', 2, 'Go to the neighbor and ask for toilet paper.'],
   ['Teens', 'both', 'dare', 2, 'Call your boyfriend or crush and explain the rules of Monopoly to them.'],
   ['Teens', 'both', 'dare', 3, 'Call your crush and sing a love song like “I can’t help falling in love”.'],
+  ['Teens', 'both', 'truth', 1, 'Do you have a journal?'],
+  ['Teens', 'both', 'truth', 2, 'Have you ever cried because of anyone?'],
+  ['Teens', 'both', 'truth', 1, 'What used to be your favorite cartoon character?'],
 ];

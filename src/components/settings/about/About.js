@@ -11,10 +11,9 @@ import VersionCheck from 'react-native-version-check';
 const About = () => {
   const navigation = useNavigation();
   const privacyPolicyHandler = () => {
-    navigation.push('Modal', {
-      type: 'privacy',
-      title: 'Privacy Policy',
-    });
+    Linking.openURL(
+      'https://merakidev.blogspot.com/2021/08/truth-or-dare-app.html',
+    ).catch(err => console.error('An error occurred', err));
   };
 
   const attributionsHandler = () => {

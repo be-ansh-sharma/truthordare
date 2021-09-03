@@ -14,7 +14,7 @@ import { useDispatch } from 'react-redux';
 import { fontConfig } from 'global/constants';
 import { GlobalNavigation } from 'navigations/AppNavigation';
 import Splash from 'components/splash/Splash';
-import { fetchGame } from 'store/action/game';
+import { cleanGame, fetchGame } from 'store/action/game';
 import { fetchInformation } from 'store/action/information';
 
 LogBox.ignoreLogs(['Reanimated 2', 'Constants']);
@@ -43,7 +43,7 @@ const App = () => {
         setIsReady(true);
       })
       .catch(() => {
-        // @todo Remove everything and start over
+        dispatch(cleanGame());
       });
   }, []);
 

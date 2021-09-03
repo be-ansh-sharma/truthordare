@@ -6,7 +6,10 @@ import DialogWorker from 'components/dialog/DialogWorker';
 import Pressable from 'components/pressable/Pressable';
 import Switch from 'components/switch/Switch';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateAds, updateAdultMode } from 'store/action/information';
+import {
+  updatePersonlization,
+  updateAdultMode,
+} from 'store/action/information';
 import Icon from 'components/Icons/Icon';
 import { COLOR } from 'global/styles';
 import { useNavigation } from '@react-navigation/core';
@@ -21,7 +24,7 @@ const Body = () => {
   );
   const openDialog = dialog => setDialog(dialog);
   const closeDialogHandler = () => setDialog(false);
-  const adChangeHandler = value => dispatch(updateAds(value));
+  const adChangeHandler = value => dispatch(updatePersonlization(value));
 
   const adultModeChangeHandler = value => {
     if (value !== adultMode) {

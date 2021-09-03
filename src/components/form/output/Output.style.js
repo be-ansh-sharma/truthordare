@@ -12,7 +12,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     elevation: 14,
     height: 50,
-    borderRadius: 10,
+    borderRadius: 7,
   },
   name: {
     flex: 2,

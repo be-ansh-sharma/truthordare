@@ -33,6 +33,13 @@ const game = (state = initialState, action) => {
           hasConflict = true;
         }
       });
+      if (
+        (state.gameMode === 'CoupleNormal' ||
+          state.gameMode === 'CoupleDirty') &&
+        state.players.length === 2
+      ) {
+        hasConflict = true;
+      }
       if (hasConflict) {
         break;
       }
