@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { ScrollView, StatusBar } from 'react-native';
 import Body from 'components/welcome/body/Body';
 import Header from 'components/header/Header';
@@ -15,10 +15,7 @@ const Welcome = ({ navigation }) => {
   const dispatch = useDispatch();
   const getConsent = async () => {
     const { consentStatus, isRequestLocationInEeaOrUnknown } =
-      await UMP.requestConsentInfoUpdate({
-        debugGeography: UMP.DEBUG_GEOGRAPHY.EEA,
-        testDeviceIds: ['FB08E555F71ED2ED87241A3FE233F6A8'],
-      });
+      await UMP.requestConsentInfoUpdate();
     if (
       consentStatus === UMP.CONSENT_STATUS.REQUIRED &&
       isRequestLocationInEeaOrUnknown
@@ -33,7 +30,7 @@ const Welcome = ({ navigation }) => {
   };
 
   useEffect(() => {
-    if (consentProvided) {
+    if (!consentProvided) {
       getConsent().catch(err => {
         dispatch(updatePersonlization(false));
         console.log(err);

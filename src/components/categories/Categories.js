@@ -18,7 +18,12 @@ const Categories = ({ categories }) => {
     return <Category key={item.value} {...item} />;
   };
 
-  const snapHandler = index => dispatch(setMode(categories[index].value));
+  const snapHandler = index => {
+    if (isGameInProgress) {
+      dispatch(cleanGame());
+    }
+    dispatch(setMode(categories[index].value));
+  };
 
   useEffect(() => {
     if (isGameInProgress) {

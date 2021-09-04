@@ -37,7 +37,7 @@ const Body = () => {
 
   const feedbackHandler = () => {
     Linking.openURL(
-      'mailto:epoch.feedback@gmail.com?subject=Drinking Buddy App Feedback',
+      'mailto:epoch.feedback@gmail.com?subject=Truth or Dare App Feedback',
     ).catch(err => console.error('An error occurred', err));
   };
 

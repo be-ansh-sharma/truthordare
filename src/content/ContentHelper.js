@@ -72,10 +72,7 @@ export const setupContent = async () => {
       'Hot',
       'TabooKinky',
       'Teens',
-    ].forEach(mode => {
-      let selected = getMode(mode);
-      pushContent(selected);
-    });
+    ].forEach(mode => pushContent(getMode(mode)));
   } catch (err) {
     throw err;
   }

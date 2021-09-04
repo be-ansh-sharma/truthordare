@@ -1,25 +1,39 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Dialog, Button, Portal, Text } from 'react-native-paper';
 import { View } from 'react-native';
-import RewardBanner from 'components/Banners/RewardBanner';
+import { getCurrentDate, showRewardAd } from 'global/helpers/utils';
+import { useDispatch, useSelector } from 'react-redux';
+import { setRewardTime } from 'store/action/information';
 
 const RemoveAdsTemp = ({ closeDialogHandler, title, body }) => {
-  const [reward, setReward] = useState(false);
+  const personalizedAds = useSelector(
+    state => state.information.personalizedAds,
+  );
+  const dispatch = useDispatch();
   const hideDialog = cancel => {
     if (!cancel) {
       return closeDialogHandler();
     }
-    setReward(true);
-  };
-
-  const rewardHandler = () => {
-    closeDialogHandler();
+    showRewardAd(personalizedAds)
+      .then(_adv => {
+        _adv.addEventListener('rewarded', () => {
+          dispatch(setRewardTime(getCurrentDate()));
+          _adv.removeAllListeners();
+        });
+        _adv.show();
+      })
+      .catch(err => {
+        console.log(err);
+      })
+      .finally(() => {
+        closeDialogHandler();
+      });
   };
 
   return (
     <View>
       <Portal>
-        <Dialog visible={!reward} dismissable={false}>
+        <Dialog visible={true} dismissable={false}>
           <Dialog.Title>{title}</Dialog.Title>
           <Dialog.Content>
             <View>
@@ -32,7 +46,6 @@ const RemoveAdsTemp = ({ closeDialogHandler, title, body }) => {
           </Dialog.Actions>
         </Dialog>
       </Portal>
-      {!!reward && <RewardBanner rewardHandler={rewardHandler} />}
     </View>
   );
 };

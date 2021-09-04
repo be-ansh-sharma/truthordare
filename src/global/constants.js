@@ -28,7 +28,7 @@ export const testIDs = {
 export const productionIDs = {
   banner: 'ca-app-pub-2290547364208155/8713101217',
   fullScreen: 'ca-app-pub-2290547364208155/9059396208',
-  reward: 'ca-app-pub-2290547364208155/3523164349',
+  reward: 'ca-app-pub-2290547364208155/4856227624',
 };
 
 export const categories = [
@@ -37,7 +37,7 @@ export const categories = [
     value: 'Teens',
     color: ['#0061ff', '#60efff'],
     description:
-      "Age Friendly. We don't care who you are as long as you are having fun.",
+      "Age Friendly. Learn about your friends' most embarrassing moments, watch how they react when dared to do something gross or scary, and just get to know each other better!",
   },
   {
     name: 'Classic',
@@ -51,7 +51,7 @@ export const categories = [
     value: 'CoupleNormal',
     color: ['#CB356B', '#BD3F32'],
     description:
-      "Vanilla couples needs a vanilla mode. Meant to play with your SO to spice up the relationship. Don't get too crazy kids",
+      'Vanilla couples needs a vanilla mode. Meant to play with your parthner to spice up the relationship.',
   },
   // {
   //   name: 'Battle',
@@ -74,22 +74,20 @@ export const adultCategories = [
     name: 'Hot',
     value: 'Hot',
     color: ['#333333', '#dd1818'],
-    description:
-      "A bit of the teasing. Show us your chamber to secrets. Let's raise the temprature",
+    description: 'A bit of the teasing as we are raising the temprature',
   },
   {
     name: 'Couple Dirty',
     value: 'CoupleDirty',
     color: ['#8A2387', '#E94057', '#F27121'],
     description:
-      'Now We are talking! Let your significant other know how dirty you are. Add spice to your life. This mode is not for kids.',
+      'Let your significant other know how dirty you are. Add spice to your love life. This mode is not for kids.',
   },
   {
     name: 'Taboo & Kinky',
     value: 'TabooKinky',
     color: ['#333333', '#dd1818'],
-    description:
-      'Break the chains and be the champian of everything Kinky. Strictly 18+',
+    description: 'Strictly 18+ and Kinky',
   },
 ];
 
