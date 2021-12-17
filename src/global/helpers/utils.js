@@ -36,6 +36,7 @@ export const getadUnitID = key => {
 export const initAdMob = async () => {
   if (!AD_MOB_INIT) {
     await AdMob.initialize();
+    AD_MOB_INIT = true;
   }
 };
 
