@@ -9,7 +9,7 @@ import {
   Provider as PaperProvider,
   configureFonts,
 } from 'react-native-paper';
-import { StatusBar, LogBox, View } from 'react-native';
+import { StatusBar, LogBox } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { fontConfig } from 'global/constants';
 import { GlobalNavigation } from 'navigations/AppNavigation';
@@ -17,7 +17,7 @@ import Splash from 'components/splash/Splash';
 import { cleanGame, fetchGame } from 'store/action/game';
 import { fetchInformation } from 'store/action/information';
 
-LogBox.ignoreLogs(['Reanimated 2', 'Constants']);
+LogBox.ignoreLogs(['Reanimated 2', 'Constants', 'ViewPropTypes']);
 
 const CombinedDarkTheme = {
   ...PaperDarkTheme,
